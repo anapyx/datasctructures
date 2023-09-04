@@ -8,6 +8,9 @@ class No:
 
     def getContent(self):
         return self.content
+    
+    def setContent(self, content):
+        self.content = content
 
     def setNext(self, next):
         self.next = next

@@ -28,23 +28,12 @@ class LSE:
         while current:
             print(current.content)
             current = current.next
-
-    # Adiciona Nó no fim da lista
-    def append(self, newnode):
-        current = self.head
-        if current:
-            while current.next:
-                current = current.next
-            current.next = No(newnode)
-            self.len +=1
-        else:
-            self.head = No(newnode)
-            self.len +=1
-
+            
     # Checa o elemento de determinada posição
     def element(self, pos):
         current = self.head
         aux = 1
+        
         if self.vazia():
             return 'A lista está vazia.'
         elif pos > self.len:
@@ -59,15 +48,110 @@ class LSE:
     # Checa as posições de um determinado elemento
     def position(self, elem):
         current = self.head
-        if vazia():
+        if self.empty():
             return 'Não há elementos.'
         elif self.head == elem:
             return 1
         else:
-            for i in range(1,self.len):
+            for i in range(1, self.len):
                 current = current.next
                 if current == elem:
                     return i
                 i+=1
 
+    # Adiciona Nó no início da lista
+    def append(self, elem):
+        newnode = No(elem)
+        newnode.setNext(self.head)
+        self.head = newnode
+        self.len += 1
+
+    # Adiciona Nó no meio da lista
+    def appendAtMiddle(self, pos, elem):
+        newnode = No(elem)
+        aux = self.head
+
+        for i in range(1, pos - 1):
+            aux = aux.getNext()
+
+        newnode.setNext(aux.getNext())
+        aux.setNext(newnode)
+        self.len += 1
+
+    # Adiciona Nó no fim da lista
+    def appendAtEnd(self, elem):
+        newnode = No(elem)
+        current = self.head
+
+        if current:
+            while current.getNext():
+                current = current.getNext()
+            current.setNext(newnode)
+            self.len += 1
+        else:
+            self.head = newnode
+            self.len += 1
         
+    # Inserção de Nó em uma determinada posição
+    def appendInPosition(self, pos, elem):
+        if self.empty() and pos != 1:
+            return False
+        if pos <= 0 or pos > (self.len + 1):
+            return False
+        if pos == 1:
+            return self.append(elem) 
+        elif pos == self.len+1:
+            return self.appendAtEnd(elem)
+        else:
+            return self.appendAtMiddle(pos, elem) 
+
+    # Remove Nó no início da lista
+    def removeAtStart(self):
+        aux = self.head
+        
+        removed = aux.getContent()
+        
+        self.head = aux.getNext()
+        self.len -= 1
+        
+        p = None
+        
+        return removed
+    
+    # Remove Nó em uma determinada posição
+    def removeAtPosition(self, pos):
+        current = None
+        previous = None
+        value = -1
+        count = 1
+        
+        current = self.head
+        
+        while count < pos and current is not None:
+            previous = current
+            current = current.getNext()
+            count += 1
+            
+        if current is None:
+            raise ValueError("Posição inválida")
+        
+        value = current.getContent()
+        previous.setNext(current.getNext())
+        self.len -= 1
+        
+        current = None
+        
+        return value
+    
+    # Controle da remoção de Nós em posições determinadas
+    def remove(self, pos):
+    
+        if self.empty():
+            raise ValueError("A lista está vazia.")
+        if pos <= 0 or pos >= self.len:
+            raise ValueError("Posição inválida.")
+        
+        if pos == 1:
+            return self.removeAtStart()
+        else:
+            return self.removeAtPosition(pos)
