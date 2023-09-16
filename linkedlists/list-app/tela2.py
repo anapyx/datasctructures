@@ -41,7 +41,7 @@ app.frame2.grid(row=1, rowspan=4, column=1, columnspan=4, padx=(0,20), sticky="n
 
 
 ##criando botões
-app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Elemento 1", font=defaultfont)
+app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Criar Cabeça", font=defaultfont)
 app.button_1.grid(row=0, column=0, padx=20, pady=(40,20))
 
 app.button_2 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="ADD", font=defaultfont)
@@ -50,14 +50,12 @@ app.button_2.grid(row=1, column=0, padx=20, pady=20)
 app.button_3 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Remove", font=defaultfont)
 app.button_3.grid(row=2, column=0, padx=20, pady=20)
 
-app.button_4 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Procura\nElemento", font=defaultfont)
+app.button_4 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Busca pelo\nElemento", font=defaultfont)
 app.button_4.grid(row=3, column=0, padx=20, pady=20)
 
-app.button_5 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Procura\nPosição", font=defaultfont)
+app.button_5 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Busca na\nPosição", font=defaultfont)
 app.button_5.grid(row=4, column=0, padx=20, pady=20)
 
-app.button_5 = customtkinter.CTkButton(app.frame1, width=150, height=30, text="Gerar", font=defaultfont)
-app.button_5.grid(row=7, column=0, padx=20, pady=20)
 
 
 #Creating label prototype
