@@ -4,42 +4,18 @@ from No import No
 from LSE import LSE
 
 class LDE(LSE):
-    def __init__(self, head):
-        self.head = None
+    def __init__(self, head=None):
+        super().__init__()
         self.tail = None
-        self.len = 0
+    
+    # A LDE herdou os metodos empty, size, full, printlist e element da LSE
 
-    def empty(self):
-        if self.len == 0:
-            return True
-        return False
-    
-    def size(self):
-        return self.len
-    
-    # Checa o elemento de determinada posição
-    def element(self, pos):
-        aux = self.head
-        count = 1
-        
-        if self.empty():
-            raise ValueError("A lista está vazia.")
-        
-        if pos < 1 or pos > self.len:
-            raise ValueError("Posição inválida.")
-        
-        while count < pos:
-            aux = aux.getNext()
-            count += 1
-        
-        return aux.getContent()
-    
-    # Checa as posições de um determinado elemento
+    # Checa as posicoes de um determinado elemento
     def position(self, elem):
         count = 1
         
         if self.empty():
-            raise ValueError("A lista está vazia.")
+            raise ValueError("A lista esta vazia.")
         
         aux = self.head
         
@@ -51,7 +27,7 @@ class LDE(LSE):
             
         raise ValueError("Nenhum elemento foi encontrado.")
     
-    # Adiciona Nó em lista vazia
+    # Adiciona Nï¿½ em lista vazia
     def append(self, elem):
         newnode = No()
         
@@ -69,7 +45,7 @@ class LDE(LSE):
         
         return True
     
-    # Adiciona Nó no meio da lista
+    # Adiciona Nï¿½ no meio da lista
     def appendAtMiddle(self, pos, elem):
         count = 1
         
@@ -97,7 +73,7 @@ class LDE(LSE):
         
         return True
     
-    # Adiciona Nó no fim da lista
+    # Adiciona Nï¿½ no fim da lista
     def appendAtEnd(self, elem):
         newnode = No()
         newnode.setContent(elem)
@@ -118,7 +94,7 @@ class LDE(LSE):
         
         return True
     
-    # Inserção de Nó em uma determinada posição
+    # Inserï¿½ï¿½o de Nï¿½ em uma determinada posiï¿½ï¿½o
     def appendInPosition(self, pos, elem):
         if self.empty() and pos != 1:
             return False
@@ -130,7 +106,7 @@ class LDE(LSE):
         else:
             return self.appendAtMiddle(pos, elem)
         
-    # Remove Nó no início de uma lista unitária
+    # Remove Nï¿½ no inï¿½cio de uma lista unitï¿½ria
     def removeUnitaryList(self):
         value = self.head.getContent()
         self.head = None
@@ -139,7 +115,7 @@ class LDE(LSE):
         
         return value
     
-    # Remove Nó no início da lista
+    # Remove Nï¿½ no inï¿½cio da lista
     def removeAtStart(self):
         aux = self.head
         
@@ -154,7 +130,7 @@ class LDE(LSE):
         
         return value
     
-    # Remove Nó no meio da lista
+    # Remove Nï¿½ no meio da lista
     def removeAtMiddle(self, pos):
         aux = self.head
         count = 1
@@ -164,7 +140,7 @@ class LDE(LSE):
             count += 1
             
         if aux is None:
-            raise ValueError("Posição inválida.")
+            raise ValueError("Posicao invalida.")
         
         value = aux.getContent()
         
@@ -177,7 +153,7 @@ class LDE(LSE):
         
         return value
         
-    # Remove Nó no fim da lista
+    # Remove Nï¿½ no fim da lista
     def removeAtEnd(self):
         aux = self.tail()
         
@@ -192,10 +168,10 @@ class LDE(LSE):
         
         return value
     
-    # Controle da remoção de Nós em posições determinadas
+    # Controle da remoï¿½ï¿½o de Nï¿½s em posiï¿½ï¿½es determinadas
     def remove(self, pos):
         if self.empty():
-            raise ValueError("A lista está vazia")
+            raise ValueError("A lista esta vazia")
         
         if pos == 1 and self.len == 1:
             return self.removeUnitaryList()

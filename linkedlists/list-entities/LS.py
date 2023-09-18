@@ -1,74 +1,80 @@
 class LS:
-    def __init__(self):
-        self.dados = []
+    def __init__(self, size=0):
+        self.dados = [None]*size
         self.len = len(self.dados)
 
-    # Verifica se a lista está vazia
+    # Verifica se a lista esta vazia
     def empty(self):
         if self.len == 0:
             return True
         else:
             return False
 
-    # Verifica se a lista está cheia
+    # Verifica se a lista esta cheia
     def full(self):
-        return self.len == self.dados.size()
+        if self.empty() == True:
+            return False
+        elif self.empty() == False:
+            if None in self.dados:
+                return False
+            else:
+                return True
     
     # Retorna o tamanho da lista
     def size(self):
+        self.len = len(self.dados)
         return self.len
     
     # Printa os elementos da lista
-    def print(self):
-        current = self.head
-        while current:
-            print(current.content)
-            current = current.next
+    def printList(self):
+        print(self.dados)
 
-    # Checa o elemento de determinada posição
+    # Checa o elemento de determinada posicao
     def element(self, pos):
         if pos > self.len or pos <= 0:
-            raise ValueError("Posição inválida.")
+            raise ValueError("Posicao invalida.")
         return self.dados[pos-1]
     
-    # Checa as posições de um determinado elemento
+    # Checa as posicoes de um determinado elemento
     def position(self, elem):
         for i in range(0, self.len - 1):
             if self.dados[i] == elem:
                 return i + 1
-        
         raise ValueError("Nenhum elemento foi encontrado.")
     
-    # Checa as posições de um determinado elemento após a primeira ocorrência
+    # Checa as posicoes de um determinado elemento apos a primeira ocorrencia
     def position(self, elem, desloc):
         for  i in range(desloc, self.len - 1):
             if self.dados[i] == elem:
                 return i+1
         raise ValueError("Nenhum elemento foi encontrado.")
     
-    # Inserção de Nó em uma determinada posição
-    def append(self, pos, elem):
-        if self.full() or pos > self.len or pos <= 0:
-            return False
-        
-        for i in range (self.len, pos - 1, -1):
-            self.dados[i] = self.dados[i - 1]
-            
+    # Insercao de elemento em uma determinada posicao
+    def appendList(self, elem, pos=1):
+        if self.len == 0 and pos == 1:
+            self.dados.append(elem)
+            return True
+        if (self.full() == True) or (pos!=1 and pos > self.len) or pos <= 0:
+            return ("Posicao invalida.")
+        last = self.dados[self.len-1]
+        if last is not None:
+            self.dados.append(last)
+        for i in range (self.len - 1, pos-1, -1):
+            if self.dados[i-1] is not None:
+                self.dados[i] = self.dados[i - 1]            
         self.dados[pos - 1] = elem
-        
-        self.len += 1
-        
+        self.len
         return True
     
-    # Remoção de Nó de uma determinada posição
+    # Remocao de uma determinada posicao
     def remove(self, pos):
         if pos > self.len or pos <=0:
-            raise ValueError("Posição inválida.")
-        
+            raise ValueError("Posicao invalida.")
         aux = self.dados[pos - 1]
-        
-        for i in range(pos - 1, self.len):
-            self.dados[i] = self.dados[i + 1]
-        
-        self.len -= 1
-        return aux
+        if pos == self.len:
+            self.dados.pop()
+            return True
+        else:
+            self.dados.pop(pos-1)
+    
+    # Talvez adicionar remoÃ§Ã£o de determinado elemento

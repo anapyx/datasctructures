@@ -5,11 +5,11 @@ from No import No
 class LSE:
     def __init__(self, head=None):
         self.head = head
-        self.len = 0
+        self.len = len(self.head)
 
     def __str__(self):
         if self.head:
-            return f"{self.head} é o primeiro elemento da lista de tamanho {self.len}."
+            return f"{self.head} eh o primeiro elemento da lista de tamanho {self.len}."
 
     # Verifica se a lista está vazia
     def empty(self):
@@ -17,13 +17,19 @@ class LSE:
             return True
         else:
             return False
+        
+    def full(self):
+        if self.empty() == True:
+            return False
+        else:
+            return True
 
     # Retorna o tamanho da lista
     def size(self):
         return self.len
     
     # Printa os elementos da lista
-    def print(self):
+    def printList(self):
         current = self.head
         while current:
             print(current.content)
@@ -33,34 +39,33 @@ class LSE:
     def element(self, pos):
         current = self.head
         aux = 1
-        
-        if self.vazia():
-            return 'A lista está vazia.'
-        elif pos > self.len:
-            return 'Posição maior que a lista.'
-        else:
-            while aux < pos:
-                current = current.next
-                aux+=1
-            if pos == self.len:
-                return current
+        if self.empty() == True:
+            raise ValueError("A lista esta vazia.")
+        if pos < 1 or pos > self.len:
+            raise ValueError("Posicao invalida.")    
+        while aux < pos:
+            current = current.getNextnext()
+            aux+=1
+        return current.getContent()
 
     # Checa as posições de um determinado elemento
     def position(self, elem):
         current = self.head
-        if self.empty():
-            return 'Não há elementos.'
-        elif self.head == elem:
-            return 1
-        else:
-            for i in range(1, self.len):
-                current = current.next
-                if current == elem:
-                    return i
-                i+=1
+        auxpos = []
+        if self.empty() == True:
+            raise ValueError("A lista esta vazia.")
+        for i in range(1, self.len):
+            current = current.next
+            if current == elem:
+                auxpos.append(i+1)
+            i+=1
+        if len(auxpos) == 0:
+            raise ValueError("Esse elemento nao foi encontrado.")
+        else:            
+            return auxpos
 
-    # Adiciona Nó no início da lista
-    def append(self, elem):
+    # Adiciona Nó ao início da lista
+    def appendList(self, elem):
         newnode = No(elem)
         newnode.setNext(self.head)
         self.head = newnode
@@ -133,7 +138,7 @@ class LSE:
             count += 1
             
         if current is None:
-            raise ValueError("Posição inválida")
+            raise ValueError("Posicao invalida")
         
         value = current.getContent()
         previous.setNext(current.getNext())
@@ -147,9 +152,9 @@ class LSE:
     def remove(self, pos):
     
         if self.empty():
-            raise ValueError("A lista está vazia.")
+            raise ValueError("A lista esta vazia.")
         if pos <= 0 or pos >= self.len:
-            raise ValueError("Posição inválida.")
+            raise ValueError("Posicao invalida.")
         
         if pos == 1:
             return self.removeAtStart()
