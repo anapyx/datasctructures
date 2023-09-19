@@ -1,5 +1,4 @@
 import customtkinter
-import tkinter
 
 customtkinter.set_appearance_mode("System")  # Modes: system (default), light, dark
 customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
@@ -11,10 +10,6 @@ app.geometry("1100x780")
 #variaveis que vem de fora
 list_type = "Lista Duplamente Encadeada"
 #___________________________
-
-
-def button_function():
-    print("button pressed")
 
 app.title("Projeto 1 - Estrutura de dados")
 
@@ -39,12 +34,17 @@ app.frame2 = customtkinter.CTkFrame(app, width=140, height=140, corner_radius=10
 app.frame2.grid(row=1, rowspan=4, column=1, columnspan=4, padx=(0,20), sticky="nsew")
 #app.frame1.grid_rowconfigure(4, weight=1)
 
+#função utilizada para gerar o inputDialog
+def buttonInputDialog():
+    dialog = customtkinter.CTkInputDialog(text="Digite um número para ser inserido: ", title="Add")
+    print("Number:", dialog.get_input())
+
 
 ##criando botões
 app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Criar Cabeça", font=defaultfont)
 app.button_1.grid(row=0, column=0, padx=20, pady=(40,20))
 
-app.button_2 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="ADD", font=defaultfont)
+app.button_2 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="ADD", font=defaultfont, command=buttonInputDialog)
 app.button_2.grid(row=1, column=0, padx=20, pady=20)
 
 app.button_3 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Remove", font=defaultfont)
