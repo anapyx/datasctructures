@@ -37,17 +37,16 @@ class LS:
     
     # Checa as posicoes de um determinado elemento
     def position(self, elem):
+        auxPos = []
+        aux = 0
         for i in range(0, self.len - 1):
             if self.dados[i] == elem:
-                return i + 1
-        raise ValueError("Nenhum elemento foi encontrado.")
-    
-    # Checa as posicoes de um determinado elemento apos a primeira ocorrencia
-    def position(self, elem, desloc):
-        for  i in range(desloc, self.len - 1):
-            if self.dados[i] == elem:
-                return i+1
-        raise ValueError("Nenhum elemento foi encontrado.")
+                auxPos.append(i+1)
+                aux = 1
+        if aux == 1:
+            return auxPos
+        else:
+            raise ValueError("Nenhum elemento foi encontrado.")
     
     # Insercao de elemento em uma determinada posicao
     def appendList(self, elem, pos=1):
@@ -68,13 +67,27 @@ class LS:
     
     # Remocao de uma determinada posicao
     def remove(self, pos):
+        auxReorder = []
         if pos > self.len or pos <=0:
             raise ValueError("Posicao invalida.")
-        aux = self.dados[pos - 1]
-        if pos == self.len:
-            self.dados.pop()
-            return True
         else:
-            self.dados.pop(pos-1)
+            self.dados[pos-1] = None
+            return True
     
-    # Talvez adicionar remoção de determinado elemento
+    # Remoção de determinado elemento em todas as aparicoes
+    def removeData(self,elem):
+        auxPos = self.position
+        for i in range(auxPos[i-1]):
+            self.remove(auxPos[i-1])
+            return True
+        
+    # Ordena a lista para que todos os elementos nulos fiquem no final
+    def sortList(self):
+        auxReorder = []
+        for i in range(self.len-1):
+            if self.dados[i] is not None:
+                auxReorder.append(self.dados[i])
+        while len(auxReorder)<self.len:
+            auxReorder.append(None)
+        self.dados = auxReorder
+        return True

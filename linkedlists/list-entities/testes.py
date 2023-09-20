@@ -4,6 +4,7 @@ from LSE import LSE
 from LDE import LDE
 
 # Testes lista simples
+
 print('-----------TESTE LISTA SIMPLES-------------')
 testels = LS(5)
 print('Lista Simples vazia criada.')
@@ -34,10 +35,16 @@ print('Removendo elemento 2...')
 print('A lista eh:')
 testels.printList()
 print('Tamanho:', testels.size())
+print('Reordenando...')
+testels.sortList()
+print('A lista eh:')
+testels.printList()
+
 
 
 # Testes LSE
-'''print('-----------TESTE LSE-------------')
+'''
+print('-----------TESTE LSE-------------')
 testelse = LSE()
 print('LSE vazia criada.')
 print('Vazia:', testelse.empty())
@@ -55,6 +62,8 @@ testelse.printList(),
 print('-----------teste lde-------------')
 testelde = LDE()
 print('Vazia:', testelde.empty())
-print('Tamanho:', testelde.size())'''
+print('Tamanho:', testelde.size())
+'''
+
 
 print('===FIM===')
