@@ -5,7 +5,10 @@ from No import No
 class LSE:
     def __init__(self, head=None):
         self.head = head
-        self.len = len(self.head)
+        if head == None:
+            self.len = 0
+        else:
+            self.len = 1
 
     def __str__(self):
         if self.head:
@@ -18,6 +21,7 @@ class LSE:
         else:
             return False
         
+    # Verifica se a lista está cheia    
     def full(self):
         if self.empty() == True:
             return False
@@ -26,6 +30,7 @@ class LSE:
 
     # Retorna o tamanho da lista
     def size(self):
+        self.len
         return self.len
     
     # Printa os elementos da lista
@@ -64,51 +69,40 @@ class LSE:
         else:            
             return auxpos
 
-    # Adiciona Nó ao início da lista
-    def appendList(self, elem):
+    # Adiciona Nó em determinada posição
+    def appendAtStart(self,elem):
         newnode = No(elem)
-        newnode.setNext(self.head)
         self.head = newnode
-        self.len += 1
 
-    # Adiciona Nó no meio da lista
-    def appendAtMiddle(self, pos, elem):
-        newnode = No(elem)
-        aux = self.head
-
-        for i in range(1, pos - 1):
-            aux = aux.getNext()
-
-        newnode.setNext(aux.getNext())
-        aux.setNext(newnode)
-        self.len += 1
-
-    # Adiciona Nó no fim da lista
-    def appendAtEnd(self, elem):
+    def appendList(self, elem, pos=1):
         newnode = No(elem)
         current = self.head
-
-        if current:
+        if self.empty()==True and pos != 1:
+            return False
+        elif pos <= 0 or pos > self.len:
+            return False
+        elif self.empty() == True and pos == 1:
+            self.head = newnode
+            return True
+        elif self.empty() == False and pos == 1:
+            newnode.setNext(self.head)
+            self.head = newnode
+            self.len += 1
+            return True
+        elif pos == self.len:
             while current.getNext():
                 current = current.getNext()
             current.setNext(newnode)
             self.len += 1
+            return True
         else:
-            self.head = newnode
+            for i in range(1,pos-1):
+                before = current
+                current = current.getNext()
+            before.setNext(newnode)
+            newnode.setNext(current)
             self.len += 1
-        
-    # Inserção de Nó em uma determinada posição
-    def appendInPosition(self, pos, elem):
-        if self.empty() and pos != 1:
-            return False
-        if pos <= 0 or pos > (self.len + 1):
-            return False
-        if pos == 1:
-            return self.append(elem) 
-        elif pos == self.len+1:
-            return self.appendAtEnd(elem)
-        else:
-            return self.appendAtMiddle(pos, elem) 
+            return True
 
     # Remove Nó no início da lista
     def removeAtStart(self):

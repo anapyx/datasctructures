@@ -27,7 +27,7 @@ class LDE(LSE):
             
         raise ValueError("Nenhum elemento foi encontrado.")
     
-    # Adiciona N� em lista vazia
+    # Adiciona No em lista vazia
     def append(self, elem):
         newnode = No()
         
@@ -45,7 +45,7 @@ class LDE(LSE):
         
         return True
     
-    # Adiciona N� no meio da lista
+    # Adiciona No no meio da lista
     def appendAtMiddle(self, pos, elem):
         count = 1
         
@@ -73,7 +73,7 @@ class LDE(LSE):
         
         return True
     
-    # Adiciona N� no fim da lista
+    # Adiciona No no fim da lista
     def appendAtEnd(self, elem):
         newnode = No()
         newnode.setContent(elem)
@@ -94,7 +94,7 @@ class LDE(LSE):
         
         return True
     
-    # Inser��o de N� em uma determinada posi��o
+    # Insercao de No em uma determinada posicao
     def appendInPosition(self, pos, elem):
         if self.empty() and pos != 1:
             return False
@@ -106,7 +106,7 @@ class LDE(LSE):
         else:
             return self.appendAtMiddle(pos, elem)
         
-    # Remove N� no in�cio de uma lista unit�ria
+    # Remove No no inicio de uma lista unitaria
     def removeUnitaryList(self):
         value = self.head.getContent()
         self.head = None
@@ -115,7 +115,7 @@ class LDE(LSE):
         
         return value
     
-    # Remove N� no in�cio da lista
+    # Remove No no inicio da lista
     def removeAtStart(self):
         aux = self.head
         
@@ -130,7 +130,7 @@ class LDE(LSE):
         
         return value
     
-    # Remove N� no meio da lista
+    # Remove No no meio da lista
     def removeAtMiddle(self, pos):
         aux = self.head
         count = 1
@@ -153,7 +153,7 @@ class LDE(LSE):
         
         return value
         
-    # Remove N� no fim da lista
+    # Remove No no fim da lista
     def removeAtEnd(self):
         aux = self.tail()
         
@@ -168,7 +168,7 @@ class LDE(LSE):
         
         return value
     
-    # Controle da remo��o de N�s em posi��es determinadas
+    # Controle da remocao de Nos em posicoes determinadas
     def remove(self, pos):
         if self.empty():
             raise ValueError("A lista esta vazia")
