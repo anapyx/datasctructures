@@ -169,7 +169,7 @@ class LSE:
             if current.content is not None:
                 canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
                                         x + self.node_radius, y + self.node_radius,
-                                        fill="#142c59")
+                                        fill= "#ffffff", outline = "#142c59")
                 canvas.create_text(x, y, text=str(current.content), font=("Arial", 16))
 
             if current.next:

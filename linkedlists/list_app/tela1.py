@@ -25,7 +25,6 @@ app.frame2.grid(row=2, column=0, columnspan=3, sticky="nsew")
 app.grid_columnconfigure((0, 1, 2, 3), weight=1)
 app.grid_rowconfigure((0, 1, 2, 3, 4), weight=1)
 
-
 #default font
 defaultfont = customtkinter.CTkFont(size=20, weight='bold')
 

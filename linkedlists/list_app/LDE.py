@@ -238,7 +238,7 @@ class LDE():
             if isinstance(current, No):
                 canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
                                         x + self.node_radius, y + self.node_radius,
-                                        fill="#142c59")
+                                        fill= "#ffffff", outline = "#142c59")
 
                 content = current.getContent()
                 canvas.create_text(x, y, text=str(content), font=("Arial", 16))

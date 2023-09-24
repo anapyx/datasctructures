@@ -26,6 +26,8 @@ current_directory = os.getcwd()
 full_path = os.path.join(current_directory, directory_path)
 os.chdir(full_path)
 
+print("diretorio atual ", full_path)
+
 from LS import LS
 from LSE import LSE
 from LDE import LDE
@@ -46,7 +48,7 @@ app.frame1.grid_rowconfigure(7, weight=1)
 app.frame2 = customtkinter.CTkFrame(app, width=140, height=140, corner_radius=10)
 app.frame2.grid(row=1, rowspan=4, column=1, columnspan=4, padx=(0, 20), sticky="nsew")
 
-app.canvas_in_frame2 = customtkinter.CTkCanvas(app.frame2, width=1000, height=800)  # Ajuste a largura e altura conforme necessário
+app.canvas_in_frame2 = customtkinter.CTkCanvas(app.frame2, width=1000, height=800)
 app.canvas_in_frame2.pack()
 app.canvas_in_frame2.configure(bg='#2b2b2b', highlightbackground='#2b2b2b')
 
@@ -57,7 +59,8 @@ def open_tela1():
     tela1_path = os.path.join(parent_directory, 'list-app', 'tela1.py')
     subprocess.run(["python", tela1_path])
 
-def create_head():
+def create_head(canvas):
+    canvas.delete("result_text")
     global myList
     if list_type == 'Lista Sequencial':
         myList = LS(10000)
@@ -71,7 +74,7 @@ def create_head():
     dialog = customtkinter.CTkInputDialog(text="Digite o valor do número a ser inserido: ", title="Adicionar")
     elem = dialog.get_input()
     pos = 1
-    elem = int(elem)
+    #elem = int(elem)
     result = myList.appendList(elem, pos)
     
     if result is True:
@@ -82,13 +85,14 @@ def create_head():
         elif list_type == 'Lista Duplamente Encadeada':
             myList.draw_doubly_linked_list(app.canvas_in_frame2)
     else:
-        print("Operação Inválida.")
+        canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
 
-def add_element():
+def add_element(canvas):
     global myList
+    canvas.delete("result_text")
 
     if myList is None:
-        print("Cabeça da lista não foi criada.")
+        canvas.create_text(400, 50, text="Cabeça da lista não foi criada.", font=("Arial", 22), tags="result_text", fill = "white")
         return
 
     dialog = customtkinter.CTkInputDialog(text="Digite o valor do número a ser inserido: ", title="Adicionar")
@@ -111,15 +115,16 @@ def add_element():
             elif list_type == 'Lista Duplamente Encadeada':
                 myList.draw_doubly_linked_list(app.canvas_in_frame2)
         else:
-            print("Operação Inválida.")
+            canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
     except ValueError:
-        print("A posição e/ou o elemento deve ser um número inteiro válido.")
+        canvas.create_text(400, 50, text="A posição e/ou o elemento deve ser um número inteiro válido.", font=("Arial", 22), tags="result_text", fill = "white")
 
-def remove_element():
+def remove_element(canvas):
     global myList
+    canvas.delete("result_text")
 
     if myList is None:
-        print("Cabeça da lista não foi criada.")
+        canvas.create_text(400, 50, text="Cabeça da lista não foi criada.", font=("Arial", 22), tags="result_text", fill = "white")
         return
 
     dialog = customtkinter.CTkInputDialog(text="Digite a posição do número a ser removido: ", title="Remover")
@@ -137,15 +142,15 @@ def remove_element():
             elif list_type == 'Lista Duplamente Encadeada':
                 myList.draw_doubly_linked_list(app.canvas_in_frame2)
         else:
-            print("Operação Inválida.")
+            canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
     except ValueError:
-        print("A posição deve ser um número inteiro válido.")
+        canvas.create_text(400, 50, text="A posição deve ser um número inteiro válido.", font=("Arial", 22), tags="result_text", fill = "white")
 
 def search_element(canvas):
     canvas.delete("result_text") 
     
     if myList is None:
-        canvas.create_text(30, 30, text="Cabeça da lista não foi criada.", tags="result_text")
+        canvas.create_text(400, 50, text="Cabeça da lista não foi criada.", font=("Arial", 22), tags="result_text", fill = "white")
         return
 
     dialog = customtkinter.CTkInputDialog(text="Digite o valor do número a ser buscado: ", title="Buscar")
@@ -154,15 +159,15 @@ def search_element(canvas):
     try:
         positions = myList.position(elem)
         positions_str = ", ".join(map(str, positions))
-        canvas.create_text(400, 50, text=f"O elemento {elem} foi encontrado nas posições: {positions_str}", font=("Arial", 22), tags="result_text")
+        canvas.create_text(400, 50, text=f"O elemento {elem} foi encontrado nas posições: {positions_str}", font=("Arial", 22), tags="result_text", fill = "white")
     except ValueError as e:
-        canvas.create_text(400, 50, text=str(e), font=("Arial", 22), tags="result_text")
+        canvas.create_text(400, 50, text=str(e), font=("Arial", 22), tags="result_text", fill = "white")
 
 def search_position(canvas):
     canvas.delete("result_text") 
     
     if myList is None:
-        canvas.create_text(400, 30, text="Cabeça da lista não foi criada.", font=("Arial", 16), tags="result_text")
+        canvas.create_text(400, 30, text="Cabeça da lista não foi criada.", font=("Arial", 16), tags="result_text", fill = "white")
         return
 
     dialog = customtkinter.CTkInputDialog(text="Digite a posição a ser buscada: ", title="Buscar")
@@ -170,18 +175,18 @@ def search_position(canvas):
 
     try:
         element = myList.element(pos)
-        canvas.create_text(400, 50, text=f"O elemento na posição {pos} é: {element}", font=("Arial", 16), tags="result_text")
+        canvas.create_text(400, 50, text=f"O elemento na posição {pos} é: {element}", font=("Arial", 22), tags="result_text", fill = "white")
     except ValueError as e:
-        canvas.create_text(400, 50, text=str(e), font=("Arial", 16), tags="result_text")
+        canvas.create_text(400, 50, text=str(e), font=("Arial", 22), tags="result_text", fill = "white")
 
 
-app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Criar Cabeça", font=defaultfont, command=create_head)
+app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Criar Cabeça", font=defaultfont, command= lambda: create_head((app.canvas_in_frame2)))
 app.button_1.grid(row=0, column=0, padx=20, pady=(40, 20))
 
-app.button_2 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Adicionar\nElemento", font=defaultfont, command=add_element)
+app.button_2 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Adicionar\nElemento", font=defaultfont, command= lambda: add_element(app.canvas_in_frame2))
 app.button_2.grid(row=1, column=0, padx=20, pady=20)
 
-app.button_3 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Remove", font=defaultfont, command=remove_element)
+app.button_3 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Remove", font=defaultfont, command= lambda: remove_element(app.canvas_in_frame2))
 app.button_3.grid(row=2, column=0, padx=20, pady=20)
 
 app.button_4 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Busca pelo\nElemento", font=defaultfont, command= lambda: search_element(app.canvas_in_frame2))

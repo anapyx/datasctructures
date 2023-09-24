@@ -7,8 +7,8 @@ class LS:
         self.head = None
         self.dados = [None]*size
         self.len = len(self.dados)
-        self.node_radius = 20
-        self.node_spacing = 50
+        self.node_radius = 45
+        self.node_spacing = 30
         self.vertical_position = 400
 
     # Verifica se a lista esta vazia
@@ -112,7 +112,7 @@ class LS:
             if current.content is not None:
                 canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
                                         x + self.node_radius, y + self.node_radius,
-                                        fill="#142c59")
+                                        fill= "#ffffff", outline = "#142c59")
                 canvas.create_text(x, y, text=current, font=("Arial", 16))
 
             if current.next:
