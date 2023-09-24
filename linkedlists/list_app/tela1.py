@@ -1,6 +1,13 @@
-import customtkinter
+# -*- coding: utf-8 -*-
 
-app = customtkinter.CTk()  # create CTk window like you do with the Tk window
+import customtkinter
+import subprocess
+import os
+import webbrowser
+
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+app = customtkinter.CTk() 
 app.geometry("1100x780")
 
 app.title("Projeto 1 - Estrutura de dados")
@@ -25,20 +32,33 @@ defaultfont = customtkinter.CTkFont(size=20, weight='bold')
 #custom font
 customFont = customtkinter.CTkFont(size=42, weight='bold')
 
+def open_ls():
+    app.destroy()
+    subprocess.run(['python', 'list-project/linkedlists/list_app/tela2.py', 'Lista Sequencial'])
 
+def open_lse():
+    app.destroy()
+    subprocess.run(['python', 'list-project/linkedlists/list_app/tela2.py', 'Lista Simplesmente Encadeada'])
+
+def open_lde():
+    app.destroy()
+    subprocess.run(['python', 'list-project/linkedlists/list_app/tela2.py', 'Lista Duplamente Encadeada'])
+
+def open_doc():
+    url = "https://github.com/anapyx/list-project.git"
+    webbrowser.open(url)
 #criando botões
-app.button_1 = customtkinter.CTkButton(app, width=350, height=80, text="Lista Simples", font=defaultfont)
+app.button_1 = customtkinter.CTkButton(app, width=350, height=80, text="Lista Sequencial", font=defaultfont, command=open_ls)
 app.button_1.grid(row=3, column=0, padx=(20,0), pady=20)
 
-app.button_2 = customtkinter.CTkButton(app, width=350, height=80, text="Lista Simplesmente\nEncadeada", font=defaultfont)
+app.button_2 = customtkinter.CTkButton(app, width=350, height=80, text="Lista Simplesmente\nEncadeada", font=defaultfont, command=open_lse)
 app.button_2.grid(row=3, column=1, padx=(20,0), pady=20)
 
-app.button_3 = customtkinter.CTkButton(app, width=350, height=80, text="Lista Duplamente\nEncadeada", font=defaultfont)
+app.button_3 = customtkinter.CTkButton(app, width=350, height=80, text="Lista Duplamente\nEncadeada", font=defaultfont, command=open_lde)
 app.button_3.grid(row=3, column=2, padx=20, pady=20)
 
-app.button_5 = customtkinter.CTkButton(app, width=350, height=60, text="Documentação", font=defaultfont)
+app.button_5 = customtkinter.CTkButton(app, width=350, height=60, text="Documentação", font=defaultfont, command=open_doc)
 app.button_5.grid(row=4, column=2, padx=20, pady=20)
-
 
 #Creating label prototype
 label = customtkinter.CTkLabel(master= app, text='Estrutura de Dados\nAplicações de Listas', text_color='white')
