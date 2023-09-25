@@ -104,7 +104,7 @@ class LSE:
             self.len += 1
             return True
         else:
-            for i in range(1, pos - 1):
+            for i in range(1, pos):
                 before = current
                 current = current.getNext()
             before.setNext(newnode)
