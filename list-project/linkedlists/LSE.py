@@ -67,7 +67,7 @@ class LSE:
         if self.empty():
             raise ValueError("A lista está vazia.")
         for i in range(1, self.len + 1): 
-            if current.getContent() == elem:
+            if str(current.getContent()) == elem:
                 auxpos.append(i)  
             current = current.getNext()
         if not auxpos:
