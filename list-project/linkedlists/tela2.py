@@ -66,9 +66,7 @@ def open_tela1():
 def create_head(canvas):
     canvas.delete("result_text")
     global myList
-    if list_type == 'Lista Sequencial':
-        myList = LS(10000)
-    elif list_type == 'Lista Simplesmente Encadeada':
+    if list_type == 'Lista Simplesmente Encadeada':
         myList = LSE()
     elif list_type == 'Lista Duplamente Encadeada':
         myList = LDE()
@@ -82,9 +80,7 @@ def create_head(canvas):
     result = myList.appendList(elem, pos)
     
     if result is True:
-        if list_type == 'Lista Sequencial':
-            myList.draw_sequential_list(app.canvas_in_frame2)
-        elif list_type == 'Lista Simplesmente Encadeada':
+        if list_type == 'Lista Simplesmente Encadeada':
             myList.draw_singly_linked_list(app.canvas_in_frame2)
         elif list_type == 'Lista Duplamente Encadeada':
             myList.draw_doubly_linked_list(app.canvas_in_frame2)
@@ -187,9 +183,13 @@ def search_position(canvas):
     except ValueError as e:
         canvas.create_text(400, 50, text=str(e), font=("Arial", 22), tags="result_text", fill = "white")
 
+if list_type == 'Lista Sequencial':
+    app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Definir Tamanho", font=defaultfont, command= lambda: define_size((app.canvas_in_frame2)))
+    app.button_1.grid(row=0, column=0, padx=20, pady=(40, 20))
 
-app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Criar Cabeça", font=defaultfont, command= lambda: create_head((app.canvas_in_frame2)))
-app.button_1.grid(row=0, column=0, padx=20, pady=(40, 20))
+else:
+    app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Criar Cabeça", font=defaultfont, command= lambda: create_head((app.canvas_in_frame2)))
+    app.button_1.grid(row=0, column=0, padx=20, pady=(40, 20))
 
 app.button_2 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Adicionar\nElemento", font=defaultfont, command= lambda: add_element(app.canvas_in_frame2))
 app.button_2.grid(row=1, column=0, padx=20, pady=20)
