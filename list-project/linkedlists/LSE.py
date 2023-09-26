@@ -66,10 +66,12 @@ class LSE:
         auxpos = []
         if self.empty():
             raise ValueError("A lista está vazia.")
+
         for i in range(1, self.len + 1): 
             if str(current.getContent()) == elem:
                 auxpos.append(i)  
             current = current.getNext()
+
         if not auxpos:
             raise ValueError("Esse elemento não foi encontrado.")
         else:
@@ -80,7 +82,7 @@ class LSE:
     def appendList(self, elem, pos):
         newnode = No(elem)
         current = self.head
-        
+
         if pos <= 0 or pos > self.len + 1:
             return False
 
@@ -160,10 +162,16 @@ class LSE:
 
     def draw_singly_linked_list(self, canvas):
         canvas.delete("all")
+
+        #print(type(self))
+        #print(type(self.head))
+
         current = self.head 
-        x = 400  
+        x = 50
         y = 350  
         node_spacing_horizontal = 150
+
+        
 
         while current:
             if current.content is not None:
