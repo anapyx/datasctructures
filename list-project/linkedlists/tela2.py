@@ -29,8 +29,6 @@ sys.path.insert(0, "..")
 #full_path = os.path.join(current_directory, directory_path)
 #os.chdir(full_path)
 
-#print("diretorio atual ", full_path)
-
 from LS import LS
 from LSE import LSE
 from LDE import LDE
@@ -55,6 +53,7 @@ app.canvas_in_frame2 = customtkinter.CTkCanvas(app.frame2, width=1000, height=80
 app.canvas_in_frame2.pack()
 app.canvas_in_frame2.configure(bg='#2b2b2b', highlightbackground='#2b2b2b')
 
+# Funcao de percorrer entre telas
 def open_tela1():
     app.destroy()
     current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -63,6 +62,7 @@ def open_tela1():
 
     subprocess.run(["python", tela1_path])
 
+# Funcoes do canva para listas
 def define_size(canvas):
     global myList
     dialog = customtkinter.CTkInputDialog(text="Digite o valor do tamanho da lista: ", title="Criar")
@@ -161,6 +161,7 @@ def remove_element(canvas):
     except ValueError:
         canvas.create_text(400, 50, text="A posição deve ser um número inteiro válido.", font=("Arial", 22), tags="result_text", fill = "white")
 
+
 def search_element(canvas):
     canvas.delete("result_text") 
     
@@ -193,6 +194,8 @@ def search_position(canvas):
         canvas.create_text(400, 50, text=f"O elemento na posição {pos} é: {element}", font=("Arial", 22), tags="result_text", fill = "white")
     except ValueError as e:
         canvas.create_text(400, 50, text=str(e), font=("Arial", 22), tags="result_text", fill = "white")
+
+# Botoes do menu da tela 2
 
 if list_type == 'Lista Sequencial':
     app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Definir Tamanho", font=defaultfont, command= lambda: define_size((app.canvas_in_frame2)))
