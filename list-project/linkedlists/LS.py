@@ -101,27 +101,16 @@ class LS:
         self.dados[:self.len] = sorted(self.dados[:self.len], key=lambda x: x is None)
         return True
     
-    def draw_sequential_list(self, canvas):
+    def draw_sequential_list(self, canvas, size):
         canvas.delete("all")
-        current = self.head 
         x = 400  
         y = 350  
         node_spacing_horizontal = 150
+        
 
-        while current:
-            if current.content is not None:
-                canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
-                                        x + self.node_radius, y + self.node_radius,
-                                        fill= "#ffffff", outline = "#142c59")
-                canvas.create_text(x, y, text=current, font=("Arial", 16))
-
-            if current.next:
-                start_x = x + self.node_radius
-                start_y = y
-                end_x = x + node_spacing_horizontal - self.node_radius
-                end_y = y
-                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.LAST)
-
-            current = current.next
-            x += node_spacing_horizontal
-
+        for i in size:
+            canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
+                                    x + self.node_radius, y + self.node_radius,
+                                    fill= "#ffffff", outline = "#142c59")
+            try: canvas.create_text(x, y, text=self.dados[i], font=("Arial", 16))
+            except: canvas.create_text(x, y, text=None, font=("Arial", 16))
