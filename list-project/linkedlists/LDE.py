@@ -53,26 +53,25 @@ class LDE():
 
     # Checa as posições de um determinado elemento
     def position(self, elem):
-        count = 1
-        
+        current = self.head
+        auxpos = []
         if self.empty():
             raise ValueError("A lista está vazia.")
-        
-        aux = self.head
-        
-        while aux is not None:
-            if isinstance(aux, No) and aux.getContent() == elem:
-                return count
-            aux = aux.getNext()
-            count += 1
-            
-        raise ValueError("Nenhum elemento foi encontrado.")
+
+        for i in range(1, self.len + 1): 
+            if str(current.getContent()) == elem:
+                auxpos.append(i)  
+            current = current.getNext()
+
+        if not auxpos:
+            raise ValueError("Esse elemento não foi encontrado.")
+        else:
+            return auxpos 
     
     # Adiciona No em lista vazia
     def append(self, elem):
-        newnode = No()
+        newnode = No(elem)
         newnode.setContent(elem)
-        
         if self.empty():
             self.head = newnode
             self.tail = newnode
@@ -85,7 +84,23 @@ class LDE():
         self.len += 1
         
         return True
-    
+
+    # Insercao de No em uma determinada posicao
+    def appendList(self, elem, pos):
+        #if self.empty() == True:
+        #    if pos == 1:
+        #        self.append(elem)
+        #        return True
+        #    else:
+        #        return False
+
+        if pos == 1:
+            return self.append(elem)
+        elif pos == self.len+1:
+            return self.appendAtEnd(elem)
+        else:
+            return self.appendAtMiddle(pos, elem)
+
     # Adiciona No no meio da lista
     def appendAtMiddle(self, pos, elem):
         count = 1
@@ -131,24 +146,6 @@ class LDE():
 
         self.len += 1
         return True
-
-    
-    # Insercao de No em uma determinada posicao
-    def appendList(self, elem, pos):
-        if self.empty() == True:
-            if pos == 1:
-                self.head = elem
-                self.len += 1
-                return True
-            else:
-                return False
-        
-        if pos == 1:
-            return self.append(elem)
-        elif pos == self.len+1:
-            return self.appendAtEnd(elem)
-        else:
-            return self.appendAtMiddle(pos, elem)
         
     # Remove No no inicio de uma lista unitaria
     def removeUnitaryList(self):
@@ -215,7 +212,7 @@ class LDE():
         return True
     
     # Controle da remocao de Nos em posicoes determinadas
-    def remove(self, pos):
+    def removeList(self, pos):
         if self.empty():
             raise ValueError("A lista está vazia")
         
@@ -230,28 +227,51 @@ class LDE():
         
     def draw_doubly_linked_list(self, canvas):
         canvas.delete("all")
+
+        #print(type(self))
+        #print(type(self.head))
+
         current = self.head
-        x = 400
+        x = 50
         y = 350
+        node_spacing_horizontal = 150
+        
 
         while current:
-            if isinstance(current, No):
+            if current.content is not None:
                 canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
                                         x + self.node_radius, y + self.node_radius,
                                         fill= "#ffffff", outline = "#142c59")
+                canvas.create_text(x, y, text=str(current.content), font=("Arial", 16))
+            if current.next:
+                start_x = x + self.node_radius
+                start_y = y
+                end_x = x + node_spacing_horizontal - self.node_radius
+                end_y = y
+                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.LAST)
+                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.FIRST)
+            current = current.next
+            x += node_spacing_horizontal
 
-                content = current.getContent()
-                canvas.create_text(x, y, text=str(content), font=("Arial", 16))
 
-                if current.getNext() and isinstance(current.getNext(), No):
-                    canvas.create_line(x + self.node_radius, y,
-                                    x + self.node_spacing - self.node_radius, y,
-                                    arrow=customtkinter.LAST)
-
-                if current.getPrevious() and isinstance(current.getPrevious(), No):
-                    canvas.create_line(x - self.node_radius, y,
-                                    x - self.node_spacing + self.node_radius, y,
-                                    arrow=customtkinter.FIRST)
-
-            current = current.getNext()  
-            x += self.node_spacing 
+    #    while current:
+    #        if isinstance(current, No):
+    #            canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
+    #                                    x + self.node_radius, y + self.node_radius,
+    #                                    fill= "#ffffff", outline = "#142c59")
+#
+    #            content = current.getContent()
+    #            canvas.create_text(x, y, text=str(content), font=("Arial", 16))
+#
+    #            if current.getNext() and isinstance(current.getNext(), No):
+    #                canvas.create_line(x + self.node_radius, y,
+    #                                x + self.node_spacing - self.node_radius, y,
+    #                                arrow=customtkinter.LAST)
+#
+    #            if current.getPrevious() and isinstance(current.getPrevious(), No):
+    #                canvas.create_line(x - self.node_radius, y,
+    #                                x - self.node_spacing + self.node_radius, y,
+    #                                arrow=customtkinter.FIRST)
+    #                                
+    #        current = current.getNext()  
+    #        x += self.node_spacing 
