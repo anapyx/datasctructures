@@ -23,12 +23,13 @@ sys.path.insert(0, "..")
 #não sei pra que serve, mas tava dando erro
 #huehueehueh
 
-current_directory = os.path.dirname(os.path.abspath(__file__))
-directory_path = 'list-project\list-project\linkedlists'
-current_directory = os.getcwd()
-full_path = os.path.join(current_directory, directory_path)
-os.chdir(full_path)
+#current_directory = os.path.dirname(os.path.abspath(__file__))
+#directory_path = 'list-project\linkedlists'
+#current_directory = os.getcwd()
+#full_path = os.path.join(current_directory, directory_path)
+#os.chdir(full_path)
 
+#print("diretorio atual ", full_path)
 
 from LS import LS
 from LSE import LSE
@@ -68,12 +69,10 @@ def define_size(canvas):
     size = int(dialog.get_input())
     myList = LS(size)
 
-    if myList is True:
+    if size > 0:
         myList.draw_sequential_list(app.canvas_in_frame2,size)
     else:
         canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
-
-
 
 def create_head(canvas):
     canvas.delete("result_text")
@@ -84,7 +83,7 @@ def create_head(canvas):
         myList = LDE()
     else:
         return
-    
+
     dialog = customtkinter.CTkInputDialog(text="Digite o valor do número a ser inserido: ", title="Adicionar")
     elem = dialog.get_input()
     pos = 1

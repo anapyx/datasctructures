@@ -108,7 +108,7 @@ class LS:
         node_spacing_horizontal = 150
         
 
-        for i in size:
+        for i in range(1, size, 1):
             canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
                                     x + self.node_radius, y + self.node_radius,
                                     fill= "#ffffff", outline = "#142c59")
