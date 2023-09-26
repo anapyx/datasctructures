@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-
-import customtkinter
+import customtkinter as cttk
 import subprocess
 import os
 import sys
 
-customtkinter.set_default_color_theme("blue")
+cttk.set_default_color_theme("blue")
 
-app = customtkinter.CTk()
+app = cttk.CTk()
 app.geometry("1100x780")
 
 import sys
@@ -34,22 +33,22 @@ from LSE import LSE
 from LDE import LDE
 from No import No
 
-defaultfont = customtkinter.CTkFont(size=15, weight='bold')
-defaultfont2 = customtkinter.CTkFont(size=25, weight='bold')
-customFont = customtkinter.CTkFont(size=42, weight='bold')
+defaultfont = cttk.CTkFont(size=15, weight='bold')
+defaultfont2 = cttk.CTkFont(size=25, weight='bold')
+customFont = cttk.CTkFont(size=42, weight='bold')
 
 app.grid_columnconfigure((1, 2, 3, 4, 5), weight=1)
 app.grid_rowconfigure((0, 1, 2, 3, 4, 5), weight=1)
 
-app.frame1 = customtkinter.CTkFrame(app, corner_radius=10)
+app.frame1 = cttk.CTkFrame(app, corner_radius=10)
 app.frame1.grid(row=1, rowspan=4, column=0, padx=20, sticky="nsew")
 app.frame1.grid_columnconfigure(1, weight=0)
 app.frame1.grid_rowconfigure(7, weight=1)
 
-app.frame2 = customtkinter.CTkFrame(app, width=140, height=140, corner_radius=10)
+app.frame2 = cttk.CTkFrame(app, width=140, height=140, corner_radius=10)
 app.frame2.grid(row=1, rowspan=4, column=1, columnspan=4, padx=(0, 20), sticky="nsew")
 
-app.canvas_in_frame2 = customtkinter.CTkCanvas(app.frame2, width=1000, height=800)
+app.canvas_in_frame2 = cttk.CTkCanvas(app.frame2, width=1000, height=800)
 app.canvas_in_frame2.pack()
 app.canvas_in_frame2.configure(bg='#2b2b2b', highlightbackground='#2b2b2b')
 
@@ -59,13 +58,14 @@ def open_tela1():
     current_directory = os.path.dirname(os.path.abspath(__file__))
     parent_directory = os.path.dirname(current_directory)
     tela1_path = os.path.join(parent_directory,'linkedlists', 'tela1.py')
-
-    subprocess.run(["python", tela1_path])
+    print(tela1_path)
+    #subprocess.run(["python", tela1_path])
+    subprocess.call(["python", tela1_path])
 
 # Funcoes do canva para listas
 def define_size(canvas):
     global myList
-    dialog = customtkinter.CTkInputDialog(text="Digite o valor do tamanho da lista: ", title="Criar")
+    dialog = cttk.CTkInputDialog(text="Digite o valor do tamanho da lista: ", title="Criar")
     size = int(dialog.get_input())
     myList = LS(size)
 
@@ -84,7 +84,7 @@ def create_head(canvas):
     else:
         return
 
-    dialog = customtkinter.CTkInputDialog(text="Digite o valor do número a ser inserido: ", title="Adicionar")
+    dialog = cttk.CTkInputDialog(text="Digite o valor do número a ser inserido: ", title="Adicionar")
     elem = dialog.get_input()
     pos = 1
     #elem = int(elem)
@@ -110,10 +110,10 @@ def add_element(canvas):
         canvas.create_text(400, 50, text="Cabeça da lista não foi criada.", font=("Arial", 22), tags="result_text", fill = "white")
         return
 
-    dialog = customtkinter.CTkInputDialog(text="Digite o valor do número a ser inserido: ", title="Adicionar")
+    dialog = cttk.CTkInputDialog(text="Digite o valor do número a ser inserido: ", title="Adicionar")
     elem = dialog.get_input()
     dialog.destroy()
-    dialog2 = customtkinter.CTkInputDialog(text="Digite a posição que o número deve ser inserido: ", title="Adicionar")
+    dialog2 = cttk.CTkInputDialog(text="Digite a posição que o número deve ser inserido: ", title="Adicionar")
     pos = dialog2.get_input()
 
     try:
@@ -142,7 +142,7 @@ def remove_element(canvas):
         canvas.create_text(400, 50, text="Cabeça da lista não foi criada.", font=("Arial", 22), tags="result_text", fill = "white")
         return
 
-    dialog = customtkinter.CTkInputDialog(text="Digite a posição do número a ser removido: ", title="Remover")
+    dialog = cttk.CTkInputDialog(text="Digite a posição do número a ser removido: ", title="Remover")
     pos = dialog.get_input()
 
     try:
@@ -169,7 +169,7 @@ def search_element(canvas):
         canvas.create_text(400, 50, text="Cabeça da lista não foi criada.", font=("Arial", 22), tags="result_text", fill = "white")
         return
 
-    dialog = customtkinter.CTkInputDialog(text="Digite o valor do número a ser buscado: ", title="Buscar")
+    dialog = cttk.CTkInputDialog(text="Digite o valor do número a ser buscado: ", title="Buscar")
     elem = dialog.get_input()
 
     try:
@@ -186,7 +186,7 @@ def search_position(canvas):
         canvas.create_text(400, 30, text="Cabeça da lista não foi criada.", font=("Arial", 16), tags="result_text", fill = "white")
         return
 
-    dialog = customtkinter.CTkInputDialog(text="Digite a posição a ser buscada: ", title="Buscar")
+    dialog = cttk.CTkInputDialog(text="Digite a posição a ser buscada: ", title="Buscar")
     pos = int(dialog.get_input())
 
     try:
@@ -198,29 +198,29 @@ def search_position(canvas):
 # Botoes do menu da tela 2
 
 if list_type == 'Lista Sequencial':
-    app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Definir Tamanho", font=defaultfont, command= lambda: define_size((app.canvas_in_frame2)))
+    app.button_1 = cttk.CTkButton(app.frame1, width=200, height=50, text="Definir Tamanho", font=defaultfont, command= lambda: define_size((app.canvas_in_frame2)))
     app.button_1.grid(row=0, column=0, padx=20, pady=(40, 20))
 
 else:
-    app.button_1 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Criar Cabeça", font=defaultfont, command= lambda: create_head((app.canvas_in_frame2)))
+    app.button_1 = cttk.CTkButton(app.frame1, width=200, height=50, text="Criar Cabeça", font=defaultfont, command= lambda: create_head((app.canvas_in_frame2)))
     app.button_1.grid(row=0, column=0, padx=20, pady=(40, 20))
 
-app.button_2 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Adicionar\nElemento", font=defaultfont, command= lambda: add_element(app.canvas_in_frame2))
+app.button_2 = cttk.CTkButton(app.frame1, width=200, height=50, text="Adicionar\nElemento", font=defaultfont, command= lambda: add_element(app.canvas_in_frame2))
 app.button_2.grid(row=1, column=0, padx=20, pady=20)
 
-app.button_3 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Remove", font=defaultfont, command= lambda: remove_element(app.canvas_in_frame2))
+app.button_3 = cttk.CTkButton(app.frame1, width=200, height=50, text="Remove", font=defaultfont, command= lambda: remove_element(app.canvas_in_frame2))
 app.button_3.grid(row=2, column=0, padx=20, pady=20)
 
-app.button_4 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Busca pelo\nElemento", font=defaultfont, command= lambda: search_element(app.canvas_in_frame2))
+app.button_4 = cttk.CTkButton(app.frame1, width=200, height=50, text="Busca pelo\nElemento", font=defaultfont, command= lambda: search_element(app.canvas_in_frame2))
 app.button_4.grid(row=3, column=0, padx=20, pady=20)
 
-app.button_5 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Busca na\nPosição", font=defaultfont, command= lambda: search_position((app.canvas_in_frame2)))
+app.button_5 = cttk.CTkButton(app.frame1, width=200, height=50, text="Busca na\nPosição", font=defaultfont, command= lambda: search_position((app.canvas_in_frame2)))
 app.button_5.grid(row=4, column=0, padx=20, pady=20)
 
-app.button_6 = customtkinter.CTkButton(app.frame1, width=200, height=50, text="Retornar", font=defaultfont, command=open_tela1)
+app.button_6 = cttk.CTkButton(app.frame1, width=200, height=50, text="Retornar", font=defaultfont, command=open_tela1)
 app.button_6.grid(row=5, column=0, padx=20, pady=20)
 
-label = customtkinter.CTkLabel(master=app, text=list_type, text_color='white')
+label = cttk.CTkLabel(master=app, text=list_type, text_color='white')
 label.configure(width=app.winfo_screenwidth(), height=100, font=customFont, pady=10, padx=20, corner_radius=10)
 label.grid(row=0, column=0, columnspan=5, padx=20, pady=20)
 label.configure(fg_color='#142c59')
