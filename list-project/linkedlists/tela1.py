@@ -31,7 +31,7 @@ defaultfont = cttk.CTkFont(size=20, weight='bold')
 # custom font
 customFont = cttk.CTkFont(size=42, weight='bold')
 
-# função para abrir lista sequencial
+# função para abrir ARQUIVOs lista sequencial
 def open_ls():
     app.destroy()
     current_directory = os.path.dirname(os.path.abspath(__file__))
