@@ -63,6 +63,17 @@ def open_tela1():
 
     subprocess.run(["python", tela1_path])
 
+def define_size(canvas):
+    global myList
+    dialog = customtkinter.CTkInputDialog(text="Digite o valor do tamanho da lista: ", title="Criar")
+    size = int(dialog.get_input())
+    myList = LS(size)
+
+    if size > 0:
+        myList.draw_sequential_list(app.canvas_in_frame2,size)
+    else:
+        canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
+
 def create_head(canvas):
     canvas.delete("result_text")
     global myList
