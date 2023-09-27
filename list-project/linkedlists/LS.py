@@ -61,15 +61,21 @@ class LS:
         if pos < 1 or pos > self.len + 1:
             return "Posição inválida."
 
+        print(self.dados)
+
         if self.len == len(self.dados):
             self.dados.extend([None] * self.len)
+
+        print(self.dados)
 
         for i in range(self.len, pos - 1, -1):
             self.dados[i] = self.dados[i - 1]
 
         self.dados[pos - 1] = elem
         self.len += 1
-        
+
+        print(self.dados)
+
         return True
 
 
@@ -103,14 +109,20 @@ class LS:
     
     def draw_sequential_list(self, canvas, size):
         canvas.delete("all")
-        x = 400  
+        x = 50  
         y = 350  
         node_spacing_horizontal = 150
         
 
-        for i in range(1, size, 1):
+        for i in range(1, size + 1, 1):
             canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
                                     x + self.node_radius, y + self.node_radius,
                                     fill= "#ffffff", outline = "#142c59")
-            try: canvas.create_text(x, y, text=self.dados[i], font=("Arial", 16))
+            try: 
+                canvas.create_text(x, y, text=self.dados[i-1], font=("Arial", 16))
+                #print(self.dados)
             except: canvas.create_text(x, y, text=None, font=("Arial", 16))
+
+            x += node_spacing_horizontal
+
+    
