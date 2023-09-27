@@ -3,6 +3,7 @@ import customtkinter as cttk
 import subprocess
 import os
 import sys
+from appfunctions import *
 
 cttk.set_default_color_theme("blue")
 
@@ -62,7 +63,7 @@ def open_tela1():
     #subprocess.run(["python", tela1_path])
     subprocess.call(["python", tela1_path])
 
-# Funcoes do canva para listas
+# Funcoes do canvas para listas
 def define_size(canvas):
     global myList
     global size
@@ -70,10 +71,13 @@ def define_size(canvas):
     size = int(dialog.get_input())
     myList = LS(size)
 
-    if size > 0:
+    if size > 0 and size < 11:
         myList.draw_sequential_list(app.canvas_in_frame2,size)
+    elif size < 1:
+        canvas.create_text(400, 50, text="Digite um valor válido.", font=("Arial", 22), tags="result_text", fill = "white")
     else:
-        canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
+        canvas.create_text(400, 50, text="A lista não pode ter mais de 10 elementos.", font=("Arial", 22), tags="result_text", fill = "white")
+        return
 
 
 def create_head(canvas):
@@ -105,7 +109,7 @@ def add_element(canvas):
     canvas.delete("result_text")
     
     if list_type == 'Lista Sequencial':
-        limit_size = 7
+        limit_size = 10
     else:
         limit_size = 6
 
@@ -205,6 +209,7 @@ def search_position(canvas):
         canvas.create_text(400, 50, text=str(e), font=("Arial", 22), tags="result_text", fill = "white")
 
 # Botoes do menu da tela 2
+list_type = 'Lista Simplesmente Encadeada'
 
 if list_type == 'Lista Sequencial':
     app.button_1 = cttk.CTkButton(app.frame1, width=200, height=50, text="Definir Tamanho", font=defaultfont, command= lambda: define_size((app.canvas_in_frame2)))

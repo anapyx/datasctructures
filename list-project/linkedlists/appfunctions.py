@@ -3,6 +3,9 @@ from LS import LS
 from LSE import LSE
 from LDE import LDE
 from No import No
+
+app = cttk.CTk()
+list_type = 'Lista'
  
  # Funções que não envolvem mudar de arquivos
 
@@ -10,17 +13,22 @@ def open_input_dialog():
     dialog = cttk.CTkInputDialog(text="Digite o valor do número a ser inserido: ", title="Adicionar")
     print("Valor:", dialog.get_input())
 
-# Funcoes do canva para listas
+# Funcoes do canvas para listas
 def define_size(canvas):
     global myList
+    global size
     dialog = cttk.CTkInputDialog(text="Digite o valor do tamanho da lista: ", title="Criar")
     size = int(dialog.get_input())
     myList = LS(size)
 
-    if size > 0:
+    if size > 0 and size < 11:
         myList.draw_sequential_list(app.canvas_in_frame2,size)
+    elif size < 1:
+        canvas.create_text(400, 50, text="Digite um valor válido.", font=("Arial", 22), tags="result_text", fill = "white")
     else:
-        canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
+        canvas.create_text(400, 50, text="A lista não pode ter mais de 10 elementos.", font=("Arial", 22), tags="result_text", fill = "white")
+        return
+
 
 def create_head(canvas):
     canvas.delete("result_text")
@@ -49,8 +57,13 @@ def create_head(canvas):
 def add_element(canvas):
     global myList
     canvas.delete("result_text")
+    
+    if list_type == 'Lista Sequencial':
+        limit_size = 10
+    else:
+        limit_size = 6
 
-    if myList.size() == 7:
+    if myList.size() > limit_size:
         canvas.create_text(400, 50, text="A lista não pode ter mais de 7 elementos.", font=("Arial", 22), tags="result_text", fill = "white")
         return
 
@@ -67,12 +80,12 @@ def add_element(canvas):
     try:
         pos = int(pos)
         elem = int(elem)
-        
+
         result = myList.appendList(elem, pos)
 
         if result is True:
             if list_type == 'Lista Sequencial':
-                myList.draw_sequential_list(app.canvas_in_frame2)
+                myList.draw_sequential_list(app.canvas_in_frame2, size)
             elif list_type == 'Lista Simplesmente Encadeada':
                 myList.draw_singly_linked_list(app.canvas_in_frame2)
             elif list_type == 'Lista Duplamente Encadeada':
@@ -95,11 +108,13 @@ def remove_element(canvas):
 
     try:
         pos = int(pos) 
+
+
         result = myList.removeList(pos) 
 
         if result is True:
             if list_type == 'Lista Sequencial':
-                myList.draw_sequential_list(app.canvas_in_frame2)
+                myList.draw_sequential_list(app.canvas_in_frame2, size)
             elif list_type == 'Lista Simplesmente Encadeada':
                 myList.draw_singly_linked_list(app.canvas_in_frame2)
             elif list_type == 'Lista Duplamente Encadeada':

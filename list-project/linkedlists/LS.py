@@ -105,20 +105,22 @@ class LS:
     
     def draw_sequential_list(self, canvas, size):
         canvas.delete("all")
-        x = 50  
-        y = 350  
-        node_spacing_horizontal = 150
-        
+        x = 500
+        y = 370  
+        node_spacing_horizontal = 100
+
+        for i in range(1, size,1):
+            if size == 1:
+                break
+            x-=50
 
         for i in range(1, size + 1, 1):
             canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
                                     x + self.node_radius, y + self.node_radius,
-                                    fill= "#ffffff", outline = "#142c59")
+                                    fill= "#fffdfa", outline = "#142c59", width = 2)
             try: 
                 canvas.create_text(x, y, text=self.dados[i-1], font=("Arial", 16))
-                #print(self.dados)
             except: canvas.create_text(x, y, text=None, font=("Arial", 16))
-
-            x += node_spacing_horizontal
+            x = x + node_spacing_horizontal
 
     

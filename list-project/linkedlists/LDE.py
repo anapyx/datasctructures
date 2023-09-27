@@ -241,15 +241,15 @@ class LDE():
             if current.content is not None:
                 canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
                                         x + self.node_radius, y + self.node_radius,
-                                        fill= "#ffffff", outline = "#142c59")
+                                        fill= "#fffdfa", outline = "#142c59")
                 canvas.create_text(x, y, text=str(current.content), font=("Arial", 16))
             if current.next:
                 start_x = x + self.node_radius
                 start_y = y
                 end_x = x + node_spacing_horizontal - self.node_radius
                 end_y = y
-                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.LAST)
-                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.FIRST)
+                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.LAST,width=4,fill="#3B8ED0")
+                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.FIRST,width=4,fill="#3B8ED0")
             current = current.next
             x += node_spacing_horizontal
 
