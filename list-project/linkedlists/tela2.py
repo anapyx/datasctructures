@@ -209,7 +209,6 @@ def search_position(canvas):
         canvas.create_text(400, 50, text=str(e), font=("Arial", 22), tags="result_text", fill = "white")
 
 # Botoes do menu da tela 2
-list_type = 'Lista Simplesmente Encadeada'
 
 if list_type == 'Lista Sequencial':
     app.button_1 = cttk.CTkButton(app.frame1, width=200, height=50, text="Definir Tamanho", font=defaultfont, command= lambda: define_size((app.canvas_in_frame2)))
