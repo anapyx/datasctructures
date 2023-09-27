@@ -65,6 +65,7 @@ def open_tela1():
 # Funcoes do canva para listas
 def define_size(canvas):
     global myList
+    global size
     dialog = cttk.CTkInputDialog(text="Digite o valor do tamanho da lista: ", title="Criar")
     size = int(dialog.get_input())
     myList = LS(size)
@@ -73,6 +74,7 @@ def define_size(canvas):
         myList.draw_sequential_list(app.canvas_in_frame2,size)
     else:
         canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
+
 
 def create_head(canvas):
     canvas.delete("result_text")
@@ -101,8 +103,13 @@ def create_head(canvas):
 def add_element(canvas):
     global myList
     canvas.delete("result_text")
+    
+    if list_type == 'Lista Sequencial':
+        limit_size = 7
+    else:
+        limit_size = 6
 
-    if myList.size() == 7:
+    if myList.size() > limit_size:
         canvas.create_text(400, 50, text="A lista não pode ter mais de 7 elementos.", font=("Arial", 22), tags="result_text", fill = "white")
         return
 
@@ -119,12 +126,12 @@ def add_element(canvas):
     try:
         pos = int(pos)
         elem = int(elem)
-        
+
         result = myList.appendList(elem, pos)
 
         if result is True:
             if list_type == 'Lista Sequencial':
-                myList.draw_sequential_list(app.canvas_in_frame2)
+                myList.draw_sequential_list(app.canvas_in_frame2, size)
             elif list_type == 'Lista Simplesmente Encadeada':
                 myList.draw_singly_linked_list(app.canvas_in_frame2)
             elif list_type == 'Lista Duplamente Encadeada':
@@ -204,6 +211,7 @@ if list_type == 'Lista Sequencial':
 else:
     app.button_1 = cttk.CTkButton(app.frame1, width=200, height=50, text="Criar Cabeça", font=defaultfont, command= lambda: create_head((app.canvas_in_frame2)))
     app.button_1.grid(row=0, column=0, padx=20, pady=(40, 20))
+
 
 app.button_2 = cttk.CTkButton(app.frame1, width=200, height=50, text="Adicionar\nElemento", font=defaultfont, command= lambda: add_element(app.canvas_in_frame2))
 app.button_2.grid(row=1, column=0, padx=20, pady=20)
