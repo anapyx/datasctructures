@@ -154,11 +154,13 @@ def remove_element(canvas):
 
     try:
         pos = int(pos) 
+
+
         result = myList.removeList(pos) 
 
         if result is True:
             if list_type == 'Lista Sequencial':
-                myList.draw_sequential_list(app.canvas_in_frame2)
+                myList.draw_sequential_list(app.canvas_in_frame2, size)
             elif list_type == 'Lista Simplesmente Encadeada':
                 myList.draw_singly_linked_list(app.canvas_in_frame2)
             elif list_type == 'Lista Duplamente Encadeada':
