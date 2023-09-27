@@ -16,12 +16,9 @@ if len(sys.argv) > 1:
 else:
     list_type = "Lista"
 
-app.title("Projeto 1 - Estrutura de dados")
+app.title("Projeto de Listas - Estrutura de dados")
 
 sys.path.insert(0, "..")
-
-#não sei pra que serve, mas tava dando erro
-#huehueehueh
 
 #current_directory = os.path.dirname(os.path.abspath(__file__))
 #directory_path = 'list-project\linkedlists'
@@ -41,17 +38,17 @@ customFont = cttk.CTkFont(size=42, weight='bold')
 app.grid_columnconfigure((1, 2, 3, 4, 5), weight=1)
 app.grid_rowconfigure((0, 1, 2, 3, 4, 5), weight=1)
 
-app.frame1 = cttk.CTkFrame(app, corner_radius=10)
-app.frame1.grid(row=1, rowspan=4, column=0, padx=20, sticky="nsew")
-app.frame1.grid_columnconfigure(1, weight=0)
-app.frame1.grid_rowconfigure(7, weight=1)
+app.frameMenu = cttk.CTkFrame(app, corner_radius=10)
+app.frameMenu.grid(row=1, rowspan=4, column=0, padx=20, sticky="nsew")
+app.frameMenu.grid_columnconfigure(1, weight=0)
+app.frameMenu.grid_rowconfigure(7, weight=1)
 
-app.frame2 = cttk.CTkFrame(app, width=140, height=140, corner_radius=10)
-app.frame2.grid(row=1, rowspan=4, column=1, columnspan=4, padx=(0, 20), sticky="nsew")
+app.frameBlank = cttk.CTkFrame(app, width=140, height=140, corner_radius=10)
+app.frameBlank.grid(row=1, rowspan=4, column=1, columnspan=4, padx=(0, 20), sticky="nsew")
 
-app.canvas_in_frame2 = cttk.CTkCanvas(app.frame2, width=1000, height=800)
-app.canvas_in_frame2.pack()
-app.canvas_in_frame2.configure(bg='#2b2b2b', highlightbackground='#2b2b2b')
+app.canvas_in_frame = cttk.CTkCanvas(app.frameBlank, width=1000, height=800)
+app.canvas_in_frame.pack()
+app.canvas_in_frame.configure(bg='#2b2b2b', highlightbackground='#2b2b2b')
 
 # Funcao de percorrer entre telas
 def open_tela1():
@@ -72,7 +69,7 @@ def define_size(canvas):
     myList = LS(size)
 
     if size > 0 and size < 11:
-        myList.draw_sequential_list(app.canvas_in_frame2,size)
+        myList.draw_sequential_list(app.canvas_in_frame,size)
     elif size < 1:
         canvas.create_text(400, 50, text="Digite um valor válido.", font=("Arial", 22), tags="result_text", fill = "white")
     else:
@@ -98,9 +95,9 @@ def create_head(canvas):
     
     if result is True:
         if list_type == 'Lista Simplesmente Encadeada':
-            myList.draw_singly_linked_list(app.canvas_in_frame2)
+            myList.draw_singly_linked_list(app.canvas_in_frame)
         elif list_type == 'Lista Duplamente Encadeada':
-            myList.draw_doubly_linked_list(app.canvas_in_frame2)
+            myList.draw_doubly_linked_list(app.canvas_in_frame)
     else:
         canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
 
@@ -135,11 +132,11 @@ def add_element(canvas):
 
         if result is True:
             if list_type == 'Lista Sequencial':
-                myList.draw_sequential_list(app.canvas_in_frame2, size)
+                myList.draw_sequential_list(app.canvas_in_frame, size)
             elif list_type == 'Lista Simplesmente Encadeada':
-                myList.draw_singly_linked_list(app.canvas_in_frame2)
+                myList.draw_singly_linked_list(app.canvas_in_frame)
             elif list_type == 'Lista Duplamente Encadeada':
-                myList.draw_doubly_linked_list(app.canvas_in_frame2)
+                myList.draw_doubly_linked_list(app.canvas_in_frame)
         else:
             canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
     except ValueError:
@@ -164,11 +161,11 @@ def remove_element(canvas):
 
         if result is True:
             if list_type == 'Lista Sequencial':
-                myList.draw_sequential_list(app.canvas_in_frame2, size)
+                myList.draw_sequential_list(app.canvas_in_frame, size)
             elif list_type == 'Lista Simplesmente Encadeada':
-                myList.draw_singly_linked_list(app.canvas_in_frame2)
+                myList.draw_singly_linked_list(app.canvas_in_frame)
             elif list_type == 'Lista Duplamente Encadeada':
-                myList.draw_doubly_linked_list(app.canvas_in_frame2)
+                myList.draw_doubly_linked_list(app.canvas_in_frame)
         else:
             canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
     except ValueError:
@@ -211,28 +208,28 @@ def search_position(canvas):
 # Botoes do menu da tela 2
 
 if list_type == 'Lista Sequencial':
-    app.button_1 = cttk.CTkButton(app.frame1, width=200, height=50, text="Definir Tamanho", font=defaultfont, command= lambda: define_size((app.canvas_in_frame2)))
-    app.button_1.grid(row=0, column=0, padx=20, pady=(40, 20))
+    app.buttonSize = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Definir Tamanho", font=defaultfont, command= lambda: define_size((app.canvas_in_frame)))
+    app.buttonSize.grid(row=0, column=0, padx=20, pady=(40, 20))
 
 else:
-    app.button_1 = cttk.CTkButton(app.frame1, width=200, height=50, text="Criar Cabeça", font=defaultfont, command= lambda: create_head((app.canvas_in_frame2)))
-    app.button_1.grid(row=0, column=0, padx=20, pady=(40, 20))
+    app.buttonHead = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Criar Cabeça", font=defaultfont, command= lambda: create_head((app.canvas_in_frame)))
+    app.buttonHead.grid(row=0, column=0, padx=20, pady=(40, 20))
 
 
-app.button_2 = cttk.CTkButton(app.frame1, width=200, height=50, text="Adicionar\nElemento", font=defaultfont, command= lambda: add_element(app.canvas_in_frame2))
-app.button_2.grid(row=1, column=0, padx=20, pady=20)
+app.buttonAdd = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Adicionar\nElemento", font=defaultfont, command= lambda: add_element(app.canvas_in_frame))
+app.buttonAdd.grid(row=1, column=0, padx=20, pady=20)
 
-app.button_3 = cttk.CTkButton(app.frame1, width=200, height=50, text="Remove", font=defaultfont, command= lambda: remove_element(app.canvas_in_frame2))
-app.button_3.grid(row=2, column=0, padx=20, pady=20)
+app.buttonRem = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Remove", font=defaultfont, command= lambda: remove_element(app.canvas_in_frame))
+app.buttonRem.grid(row=2, column=0, padx=20, pady=20)
 
-app.button_4 = cttk.CTkButton(app.frame1, width=200, height=50, text="Busca pelo\nElemento", font=defaultfont, command= lambda: search_element(app.canvas_in_frame2))
-app.button_4.grid(row=3, column=0, padx=20, pady=20)
+app.buttonElem = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Busca pelo\nElemento", font=defaultfont, command= lambda: search_element(app.canvas_in_frame))
+app.buttonElem.grid(row=3, column=0, padx=20, pady=20)
 
-app.button_5 = cttk.CTkButton(app.frame1, width=200, height=50, text="Busca na\nPosição", font=defaultfont, command= lambda: search_position((app.canvas_in_frame2)))
-app.button_5.grid(row=4, column=0, padx=20, pady=20)
+app.buttonPos = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Busca na\nPosição", font=defaultfont, command= lambda: search_position((app.canvas_in_frame)))
+app.buttonPos.grid(row=4, column=0, padx=20, pady=20)
 
-app.button_6 = cttk.CTkButton(app.frame1, width=200, height=50, text="Retornar", font=defaultfont, command=open_tela1)
-app.button_6.grid(row=5, column=0, padx=20, pady=20)
+app.buttonGoBack = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Retornar", font=defaultfont, command=open_tela1)
+app.buttonGoBack.grid(row=5, column=0, padx=20, pady=20)
 
 label = cttk.CTkLabel(master=app, text=list_type, text_color='white')
 label.configure(width=app.winfo_screenwidth(), height=100, font=customFont, pady=10, padx=20, corner_radius=10)
