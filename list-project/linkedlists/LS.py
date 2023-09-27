@@ -47,8 +47,10 @@ class LS:
     def position(self, elem):
         auxPos = []
         aux = 0
+
         for i in range(0, self.len - 1):
-            if self.dados[i] == elem:
+            #print(type(self.dados[i]), type(elem))
+            if str(self.dados[i]) == elem:
                 auxPos.append(i+1)
                 aux = 1
         if aux == 1:
@@ -61,20 +63,15 @@ class LS:
         if pos < 1 or pos > self.len + 1:
             return "Posição inválida."
 
-        print(self.dados)
+        #NAO SEI PARA QUE SERVEM, MAS ESTAVAM DANDO ERRO
+        #if self.len == len(self.dados):
+        #    self.dados.extend([None] * self.len)
 
-        if self.len == len(self.dados):
-            self.dados.extend([None] * self.len)
-
-        print(self.dados)
-
-        for i in range(self.len, pos - 1, -1):
-            self.dados[i] = self.dados[i - 1]
+        #for i in range(self.len, pos - 1, -1):
+        #    self.dados[i] = self.dados[i - 1]
 
         self.dados[pos - 1] = elem
         self.len += 1
-
-        print(self.dados)
 
         return True
 
@@ -82,10 +79,9 @@ class LS:
     # Remocao de uma determinada posicao
     def removeList(self, pos):
         if 1 <= pos <= self.len:
-            for i in range(pos, self.len):
-                self.dados[i - 1] = self.dados[i]
-            self.dados[self.len - 1] = None
-            self.len -= 1
+
+            self.dados[pos-1] = None
+
             return True
         else:
             raise ValueError("Posição inválida.")
