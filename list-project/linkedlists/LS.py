@@ -74,28 +74,23 @@ class LS:
         # fim empurrar
 
         self.dados[pos - 1] = elem
-        self.len += 1
 
         return True
 
 
     # Remocao de uma determinada posicao
     def removeList(self, pos):
-        
-        if pos<1 or pos>self.len:
-            return "Posição Inválida"
-        if pos==1 and self.len == 1:
-            self.dados[pos-1]=None
-            return True
-        # else:
-        #     raise ValueError("Nenhum elemento foi encontrado.")
+        if pos < 1 or pos > self.len:
+            raise ValueError("Posição Inválida")
 
-        self.dados[pos-1]=None
-        
-        for i in range(pos-1, self.len-1, 1): 
-            self.dados[i]=self.dados[i+1]
-            self.dados[i+1]=None
-            return True
+        self.dados[pos-1] = None
+
+        for i in range(pos-1, self.len,1):
+            if i<(self.len-1):
+                self.dados[i]=self.dados[i+1]
+            elif i==(self.len-1):
+                self.dados[i]=None
+                return True
 
     # Remoção de determinado elemento em todas as aparicoes
     def removeData(self, elem):

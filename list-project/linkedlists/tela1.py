@@ -82,7 +82,7 @@ label = cttk.CTkLabel(master= app, text='Estrutura de Dados\nAplicações de Lis
 label.configure(width=app.winfo_screenwidth(), height=app.winfo_screenheight()/3, font=customFont, pady=10, padx=20, corner_radius=15)
 label.grid(row=0, rowspan=1, column=0, columnspan=3, padx=20, pady=20)
 label.configure(fg_color='#142c59')
-#label.place(relx=0.5, rely=0.25, anchor='center')
+
 
 # Criando da selecao de tela 1
 sublabel = cttk.CTkLabel(app.selectionframe, text="Selecione o tipo de lista:", text_color='white')
