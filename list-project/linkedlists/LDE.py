@@ -87,12 +87,6 @@ class LDE():
 
     # Insercao de No em uma determinada posicao
     def appendList(self, elem, pos):
-        #if self.empty() == True:
-        #    if pos == 1:
-        #        self.append(elem)
-        #        return True
-        #    else:
-        #        return False
 
         if pos == 1:
             return self.append(elem)
@@ -228,50 +222,47 @@ class LDE():
     def draw_doubly_linked_list(self, canvas):
         canvas.delete("all")
 
-        #print(type(self))
-        #print(type(self.head))
-
         current = self.head
         x = 50
         y = 350
         node_spacing_horizontal = 150
-        
 
         while current:
             if current.content is not None:
-                canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
-                                        x + self.node_radius, y + self.node_radius,
-                                        fill= "#fffdfa", outline = "#142c59")
-                canvas.create_text(x, y, text=str(current.content), font=("Arial", 16))
+                self.round_rectangle(canvas, x - self.node_radius, y - self.node_radius,
+                                    x + self.node_radius, y + self.node_radius,
+                                    fill="#fffdfa", outline="#3B8ED0", width=4)
+                canvas.create_text(x, y, text=str(current.content), font=("Arial", 20))
             if current.next:
                 start_x = x + self.node_radius
                 start_y = y
                 end_x = x + node_spacing_horizontal - self.node_radius
                 end_y = y
-                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.LAST,width=4,fill="#3B8ED0")
-                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.FIRST,width=4,fill="#3B8ED0")
+                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.LAST, width=4, fill="#3B8ED0")
+                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.FIRST, width=4, fill="#3B8ED0")
             current = current.next
             x += node_spacing_horizontal
 
+    def round_rectangle(self, canvas, x1, y1, x2, y2, radius=25, **kwargs):
+        points = [x1 + radius, y1,
+                x1 + radius, y1,
+                x2 - radius, y1,
+                x2 - radius, y1,
+                x2, y1,
+                x2, y1 + radius,
+                x2, y1 + radius,
+                x2, y2 - radius,
+                x2, y2 - radius,
+                x2, y2,
+                x2 - radius, y2,
+                x2 - radius, y2,
+                x1 + radius, y2,
+                x1 + radius, y2,
+                x1, y2,
+                x1, y2 - radius,
+                x1, y2 - radius,
+                x1, y1 + radius,
+                x1, y1 + radius,
+                x1, y1]
 
-    #    while current:
-    #        if isinstance(current, No):
-    #            canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
-    #                                    x + self.node_radius, y + self.node_radius,
-    #                                    fill= "#ffffff", outline = "#142c59")
-#
-    #            content = current.getContent()
-    #            canvas.create_text(x, y, text=str(content), font=("Arial", 16))
-#
-    #            if current.getNext() and isinstance(current.getNext(), No):
-    #                canvas.create_line(x + self.node_radius, y,
-    #                                x + self.node_spacing - self.node_radius, y,
-    #                                arrow=customtkinter.LAST)
-#
-    #            if current.getPrevious() and isinstance(current.getPrevious(), No):
-    #                canvas.create_line(x - self.node_radius, y,
-    #                                x - self.node_spacing + self.node_radius, y,
-    #                                arrow=customtkinter.FIRST)
-    #                                
-    #        current = current.getNext()  
-    #        x += self.node_spacing 
+        return canvas.create_polygon(points, **kwargs, smooth=True)

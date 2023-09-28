@@ -20,12 +20,6 @@ app.title("Projeto de Listas - Estrutura de dados")
 
 sys.path.insert(0, "..")
 
-#current_directory = os.path.dirname(os.path.abspath(__file__))
-#directory_path = 'list-project\linkedlists'
-#current_directory = os.getcwd()
-#full_path = os.path.join(current_directory, directory_path)
-#os.chdir(full_path)
-
 from LS import LS
 from LSE import LSE
 from LDE import LDE

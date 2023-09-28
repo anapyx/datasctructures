@@ -38,7 +38,6 @@ def open_ls():
     parent_directory = os.path.dirname(current_directory)
     tela2_path = os.path.join(parent_directory,'linkedlists', 'tela2.py')
 
-    print(tela2_path)
     subprocess.call(["python", tela2_path, 'Lista Sequencial'])
 
 # função para abrir lse
@@ -48,7 +47,6 @@ def open_lse():
     parent_directory = os.path.dirname(current_directory)
     tela2_path = os.path.join(parent_directory,'linkedlists', 'tela2.py')
 
-    print(tela2_path)
     subprocess.call(["python", tela2_path, 'Lista Simplesmente Encadeada'])
 
 # função para abrir lde
@@ -58,26 +56,13 @@ def open_lde():
     parent_directory = os.path.dirname(current_directory)
     tela2_path = os.path.join(parent_directory,'linkedlists', 'tela2.py')
 
-    print(tela2_path)
     subprocess.call(["python", tela2_path, 'Lista Duplamente Encadeada'])
 
-#def open_ls():
-#    app.destroy()
-#    subprocess.call(['python','list-project/linkedlists/tela2.py', 'Lista Sequencial'])
-#
-#def open_lse():
-#    app.destroy()
-#    subprocess.run(['python', 'list-project/linkedlists/tela2.py', 'Lista Simplesmente Encadeada'])
-#
-#def open_lde():
-#    app.destroy()
-#    subprocess.run(['python', 'list-project/linkedlists/tela2.py', 'Lista Duplamente Encadeada'])
 
 # funcao para abrir documentacao
 def open_doc():
     url = "https://github.com/anapyx/list-project.git"
     webbrowser.open(url)
-
 
 # botões da tela um e associados as funcoes
 app.button_ls = cttk.CTkButton(app, width=350, height=80, text="Lista Sequencial", font=defaultfont, command=open_ls)

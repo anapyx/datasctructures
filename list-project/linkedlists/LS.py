@@ -63,13 +63,6 @@ class LS:
         if pos < 1 or pos > self.len + 1:
             return "Posição inválida."
 
-        #NAO SEI PARA QUE SERVEM, MAS ESTAVAM DANDO ERRO
-        #if self.len == len(self.dados):
-        #    self.dados.extend([None] * self.len)
-
-        #for i in range(self.len, pos - 1, -1):
-        #    self.dados[i] = self.dados[i - 1]
-
         self.dados[pos - 1] = elem
         self.len += 1
 
@@ -115,12 +108,34 @@ class LS:
             x-=50
 
         for i in range(1, size + 1, 1):
-            canvas.create_rectangle(x - self.node_radius, y - self.node_radius,
+            self.round_rectangle(canvas, x - self.node_radius, y - self.node_radius,
                                     x + self.node_radius, y + self.node_radius,
-                                    fill= "#fffdfa", outline = "#142c59", width = 2)
+                                    fill="#fffdfa", outline="#3B8ED0", width=4)
             try: 
-                canvas.create_text(x, y, text=self.dados[i-1], font=("Arial", 16))
+                canvas.create_text(x, y, text=self.dados[i-1], font=("Arial", 20))
             except: canvas.create_text(x, y, text=None, font=("Arial", 16))
             x = x + node_spacing_horizontal
-
     
+    def round_rectangle(self, canvas, x1, y1, x2, y2, radius=40, **kwargs):
+        points = [x1 + radius, y1,
+                x1 + radius, y1,
+                x2 - radius, y1,
+                x2 - radius, y1,
+                x2, y1,
+                x2, y1 + radius,
+                x2, y1 + radius,
+                x2, y2 - radius,
+                x2, y2 - radius,
+                x2, y2,
+                x2 - radius, y2,
+                x2 - radius, y2,
+                x1 + radius, y2,
+                x1 + radius, y2,
+                x1, y2,
+                x1, y2 - radius,
+                x1, y2 - radius,
+                x1, y1 + radius,
+                x1, y1 + radius,
+                x1, y1]
+
+        return canvas.create_polygon(points, **kwargs, smooth=True)
