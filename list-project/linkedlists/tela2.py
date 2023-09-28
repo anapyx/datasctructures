@@ -51,7 +51,6 @@ def open_tela1():
     parent_directory = os.path.dirname(current_directory)
     tela1_path = os.path.join(parent_directory,'linkedlists', 'tela1.py')
     print(tela1_path)
-    #subprocess.run(["python", tela1_path])
     subprocess.call(["python", tela1_path])
 
 # Funcoes do canvas para listas

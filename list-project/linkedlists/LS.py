@@ -81,13 +81,21 @@ class LS:
 
     # Remocao de uma determinada posicao
     def removeList(self, pos):
-        if 1 <= pos <= self.len:
-
-            self.dados[pos-1] = None
-
+        
+        if pos<1 or pos>self.len:
+            return "Posição Inválida"
+        if pos==1 and self.len == 1:
+            self.dados[pos-1]=None
             return True
-        else:
-            raise ValueError("Posição inválida.")
+        # else:
+        #     raise ValueError("Nenhum elemento foi encontrado.")
+
+        self.dados[pos-1]=None
+        
+        for i in range(pos-1, self.len-1, 1): 
+            self.dados[i]=self.dados[i+1]
+            self.dados[i+1]=None
+            return True
 
     # Remoção de determinado elemento em todas as aparicoes
     def removeData(self, elem):
