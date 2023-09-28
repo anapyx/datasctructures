@@ -90,7 +90,7 @@ sublabel.configure(font=defaultfont)
 sublabel.grid(row=0, column=0, padx=20, pady=(20,20))
 
 # creditos
-app.credits_label = cttk.CTkLabel(app.mainframe, text="Grupo: Ana Paula Cabral    \nBárbara Cavalcante \nFelipe Lima             \nJoão Pedro             ", 
+app.credits_label = cttk.CTkLabel(app.mainframe, text="Grupo: Ana Paula Cabral    \n            Bárbara Cavalcante \n            Felipe Lima             \n           João Pedro            ", 
                                        font=cttk.CTkFont(size=15, weight="bold"),
                                        anchor="w")
 

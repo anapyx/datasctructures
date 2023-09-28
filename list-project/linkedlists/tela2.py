@@ -103,7 +103,7 @@ def add_element(canvas):
         limit_size = 6
 
     if myList.size() > limit_size:
-        canvas.create_text(400, 50, text="A lista não pode ter mais de 7 elementos.", font=("Arial", 22), tags="result_text", fill = "white")
+        canvas.create_text(400, 50, text="A lista já está no tamanho máximo.", font=("Arial", 22), tags="result_text", fill = "white")
         return
 
     if myList is None:

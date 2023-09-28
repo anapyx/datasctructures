@@ -59,25 +59,22 @@ class LS:
         if pos < 1 or pos > self.len + 1:
             return "Posição inválida."
         
-        # Empurrar se houver espaços vazios
-        if self.len == 1 and pos == 1:
-            self.dados.insert(0,elem)
+        if (self.full() == True):
+            return ("Posição invalida.")
+        
+        if self.dados[pos-1] is None:
+            self.dados[pos-1] = elem
+            print(elem)
             return True
-        if (self.full() == True) or (pos!=1 and pos > self.len) or pos <= 0:
-            return ("Posicao invalida.")
-        last = self.dados[self.len-1]
-        if last is not None:
-            self.dados.append(last)
-        for i in range (self.len - 1, pos-1, -1):
-            if self.dados[i-1] is not None:
-                self.dados[i] = self.dados[i - 1]            
-        # fim empurrar
-
-        self.dados[pos - 1] = elem
-
-        return True
-
-
+        
+        
+        if self.dados[pos-1] is not None:
+            for i in range (self.len - 1, pos-1, -1):
+                if self.dados[i-1] is not None:
+                    self.dados[i] = self.dados[i-1]
+            self.dados[pos-1] = elem
+            return True
+        
     # Remocao de uma determinada posicao
     def removeList(self, pos):
         if pos < 1 or pos > self.len:
