@@ -19,7 +19,9 @@
 ## Lists Project - Implementação
 Foram criados Classes para cada tipo de Lista que contem métodos de funções para sua manipulação, além de uma Classe Nó que é utilizada nas Classes das Listas Simplesmente Encadeadas e Duplamente Encadeadas. Além disso foram utilizadas as bibliotecas de interface visual Tkinter e CustomTkinter para demonstração do funcionamento das listas e funções.
 
-**Para utilizar o programa, o usuário deverá ter o CustomTkinter instalado, a pasta linkedlists e executar o arquivo tela1.py.**
+**Para utilizar o programa, além de claro, Python, o usuário deverá ter o [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter#installation) instalado, a pasta linkedlists e executar o arquivo tela1.py.**
+
+Para mais informações sobre a biblioteca CustomTkinter: [Documentação CustomTkinter](https://github.com/TomSchimansky/CustomTkinter)
 
 ### Lista Sequencial
 Está definida no arquivo LS.py. A classe LS se inicializa inserindo como entrada o tamanho da lista sequencial. Seus atributos definidos com a inicialização são:
