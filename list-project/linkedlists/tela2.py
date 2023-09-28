@@ -143,6 +143,10 @@ def remove_element(canvas):
     if myList is None:
         canvas.create_text(400, 50, text="Cabeça da lista não foi criada.", font=("Arial", 22), tags="result_text", fill = "white")
         return
+    
+    if list_type == 'Lista Sequencial' and size < 1:
+        canvas.create_text(400, 50, text="A lista não foi criada.", font=("Arial", 22), tags="result_text", fill = "white")
+        return
 
     dialog = cttk.CTkInputDialog(text="Digite a posição do número a ser removido: ", title="Remover")
     pos = dialog.get_input()

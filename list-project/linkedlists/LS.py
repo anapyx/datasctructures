@@ -4,12 +4,9 @@ import customtkinter
 
 class LS:
     def __init__(self, size):
-        self.head = None
         self.dados = [None]*size
         self.len = len(self.dados)
         self.node_radius = 45
-        self.node_spacing = 30
-        self.vertical_position = 400
 
     # Verifica se a lista esta vazia
     def empty(self):
@@ -49,7 +46,6 @@ class LS:
         aux = 0
 
         for i in range(0, self.len - 1):
-            #print(type(self.dados[i]), type(elem))
             if str(self.dados[i]) == elem:
                 auxPos.append(i+1)
                 aux = 1

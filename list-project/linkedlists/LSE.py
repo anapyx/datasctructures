@@ -13,8 +13,6 @@ class LSE:
         else:
             self.len = 1
         self.node_radius = 45
-        self.node_spacing = 30
-        self.vertical_position = 400
         
     def __str__(self):
         if self.head:
