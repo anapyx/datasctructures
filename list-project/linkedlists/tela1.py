@@ -14,7 +14,7 @@ app.title("Projeto de Listas - Estrutura de dados")
 
 # criando frames
 app.mainframe = cttk.CTkFrame(app, width=140, height=140, corner_radius=0)
-app.mainframe.grid(row=4, column=0, columnspan=3, sticky="nsew")
+app.mainframe.grid(row=5, column=0, columnspan=3, sticky="nsew")
 #app.mainframe.grid_rowconfigure(4, weight=1)
 
 app.selectionframe = cttk.CTkFrame(app, width=140, height=140, corner_radius=0)
@@ -74,8 +74,19 @@ app.button_lse.grid(row=3, column=1, padx=(20,0), pady=20)
 app.button_lde = cttk.CTkButton(app, width=350, height=80, text="Lista Duplamente\nEncadeada", font=defaultfont, command=open_lde)
 app.button_lde.grid(row=3, column=2, padx=20, pady=20)
 
+
+app.button_pl = cttk.CTkButton(app, width=350, height=80, text="Pilhas", font=defaultfont, command=open_ls)  #open_pl)
+app.button_pl.grid(row=4, column=0, padx=(20,0), pady=(0,20))
+
+app.button_fl = cttk.CTkButton(app, width=350, height=80, text="Filas", font=defaultfont, command=open_ls)  #open_fl)
+app.button_fl.grid(row=4, column=1, padx=(20,0), pady=(0,20))
+
+app.button_abp = cttk.CTkButton(app, width=350, height=80, text="ABP", font=defaultfont, command=open_ls)  #open_abp)
+app.button_abp.grid(row=4, column=2, padx=20, pady=(0,20))
+
+
 app.button_doc = cttk.CTkButton(app, width=350, height=60, text="Documentação", font=defaultfont, command=open_doc)
-app.button_doc.grid(row=4, column=2, padx=20, pady=20)
+app.button_doc.grid(row=5, column=2, padx=20, pady=20)
 
 # Creating label do Titulo
 label = cttk.CTkLabel(master= app, text='Estrutura de Dados\nAplicações de Listas', text_color='white')
@@ -87,7 +98,7 @@ label.configure(fg_color='#142c59')
 # Criando da selecao de tela 1
 sublabel = cttk.CTkLabel(app.selectionframe, text="Selecione o tipo de lista:", text_color='white')
 sublabel.configure(font=defaultfont)
-sublabel.grid(row=0, column=0, padx=20, pady=(20,20))
+sublabel.grid(row=0, column=0, padx=20, pady=(25,20))
 
 # creditos
 app.credits_label = cttk.CTkLabel(app.mainframe, text="Grupo: Ana Paula Cabral    \n            Bárbara Cavalcante \n            Felipe Lima             \n           João Pedro            ", 
