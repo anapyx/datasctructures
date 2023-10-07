@@ -23,3 +23,9 @@ class No:
 
     def getPrevious(self):
         return self.prev
+
+    cor_azul_claro = "#3B8ED0"
+    cor_azul_escuro = "#ad8c1d"
+    cor_branca = "#fffdfa"
+
+
