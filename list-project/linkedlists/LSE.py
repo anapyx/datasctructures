@@ -166,21 +166,28 @@ class LSE:
         y = 350  
         node_spacing_horizontal = 150
 
-        
+        cor_cabeca = False
 
         while current:
+
+            cor_azul = No.cor_azul_claro
+            if cor_cabeca == False:
+                cor_azul = No.cor_azul_escuro
+
             if current.content is not None:
                 self.round_rectangle(canvas, x - self.node_radius, y - self.node_radius,
                                     x + self.node_radius, y + self.node_radius,
-                                    fill="#fffdfa", outline="#3B8ED0", width=4)
+                                    fill=No.cor_branca, outline=cor_azul, width=4)
                 canvas.create_text(x, y, text=str(current.content), font=("Arial", 20))
+
+            cor_cabeca = True
 
             if current.next:
                 start_x = x + self.node_radius
                 start_y = y
                 end_x = x + node_spacing_horizontal - self.node_radius
                 end_y = y
-                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.LAST, width=4, fill="#3B8ED0")
+                canvas.create_line(start_x, start_y, end_x, end_y, arrow=customtkinter.LAST, width=4, fill=No.cor_azul_claro)
 
             current = current.next
             x += node_spacing_horizontal
