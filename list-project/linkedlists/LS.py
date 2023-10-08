@@ -58,16 +58,15 @@ class LS:
     def appendList(self, elem, pos):
         if pos < 1 or pos > self.len + 1:
             return "Posição inválida."
-
+        
         if pos != 1 and self.dados[pos-2] is None:
             return "Posição inválida."
-        
+
         if (self.full() == True):
-            return "Posição invalida."
+            return ("Posição invalida.")
         
         if self.dados[pos-1] is None:
             self.dados[pos-1] = elem
-            print(elem)
             return True
         
         
