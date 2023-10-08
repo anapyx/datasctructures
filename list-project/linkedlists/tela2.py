@@ -3,7 +3,6 @@ import customtkinter as cttk
 import subprocess
 import os
 import sys
-from appfunctions import *
 
 cttk.set_default_color_theme("blue")
 
