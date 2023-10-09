@@ -62,7 +62,7 @@ def define_size(canvas):
     mystructure = FL(size)
 
     if size > 0 and size < 11:
-        mystructure.draw_sequential_list(app.canvas_in_frame,size)
+        mystructure.draw_queue(app.canvas_in_frame,size)
     elif size < 1:
         canvas.create_text(400, 50, text="Digite um valor válido.", font=("Arial", 22), tags="result_text", fill = "white")
     else:
@@ -122,7 +122,7 @@ def add_element(canvas):
 
         if result is True:
             if structure_type == 'Fila':
-                mystructure.draw_sequential_list(app.canvas_in_frame, size)
+                mystructure.draw_queue(app.canvas_in_frame, size)
             elif structure_type == 'Lista Simplesmente Encadeada':
                 mystructure.draw_singly_linked_list(app.canvas_in_frame)
             elif structure_type == 'Lista Duplamente Encadeada':
@@ -151,7 +151,7 @@ def remove_element(canvas):
 
     if result is True:
         if structure_type == 'Fila':
-            mystructure.draw_sequential_list(app.canvas_in_frame, size)
+            mystructure.draw_queue(app.canvas_in_frame, size)
         elif structure_type == 'Lista Simplesmente Encadeada':
             mystructure.draw_singly_linked_list(app.canvas_in_frame)
         elif structure_type == 'Lista Duplamente Encadeada':
