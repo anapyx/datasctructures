@@ -67,7 +67,6 @@ def define_size(canvas):
         canvas.create_text(400, 50, text="A lista não pode ter mais de 10 elementos.", font=("Arial", 22), tags="result_text", fill = "white")
         return
 
-
 def create_head(canvas):
     canvas.delete("result_text")
     global myList
@@ -165,7 +164,6 @@ def remove_element(canvas):
             canvas.create_text(400, 50, text="Operação Inválida.", font=("Arial", 22), tags="result_text", fill = "white")
     except ValueError:
         canvas.create_text(400, 50, text="A posição deve ser um número inteiro válido.", font=("Arial", 22), tags="result_text", fill = "white")
-
 
 def search_element(canvas):
     canvas.delete("result_text") 
