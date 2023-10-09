@@ -58,6 +58,34 @@ def open_lde():
 
     subprocess.call(["python", tela2_path, 'Lista Duplamente Encadeada'])
 
+#_____________________________________________________________________________
+# função para abrir pilhas pl
+def open_pl():
+    app.destroy()
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    parent_directory = os.path.dirname(current_directory)
+    tela3_path = os.path.join(parent_directory,'linkedlists', 'tela3.py')
+
+    subprocess.call(["python", tela3_path, 'Pilhas'])
+
+# função para abrir fila fl
+def open_fl():
+    app.destroy()
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    parent_directory = os.path.dirname(current_directory)
+    tela3_path = os.path.join(parent_directory,'linkedlists', 'tela3.py')
+
+    subprocess.call(["python", tela3_path, 'Fila'])
+
+# função para abrir arvores binarias de pesquisa
+def open_abp():
+    app.destroy()
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    parent_directory = os.path.dirname(current_directory)
+    tela3_path = os.path.join(parent_directory,'linkedlists', 'tela3.py')
+
+    subprocess.call(["python", tela3_path, 'Arvores Binárias de Pesquisa'])
+
 
 # funcao para abrir documentacao
 def open_doc():
@@ -75,13 +103,13 @@ app.button_lde = cttk.CTkButton(app, width=350, height=80, text="Lista Duplament
 app.button_lde.grid(row=3, column=2, padx=20, pady=20)
 
 
-app.button_pl = cttk.CTkButton(app, width=350, height=80, text="Pilhas", font=defaultfont, command=open_ls)  #open_pl)
+app.button_pl = cttk.CTkButton(app, width=350, height=80, text="Pilha", font=defaultfont, command=open_pl)
 app.button_pl.grid(row=4, column=0, padx=(20,0), pady=(0,20))
 
-app.button_fl = cttk.CTkButton(app, width=350, height=80, text="Filas", font=defaultfont, command=open_ls)  #open_fl)
+app.button_fl = cttk.CTkButton(app, width=350, height=80, text="Fila", font=defaultfont, command=open_fl)
 app.button_fl.grid(row=4, column=1, padx=(20,0), pady=(0,20))
 
-app.button_abp = cttk.CTkButton(app, width=350, height=80, text="ABP", font=defaultfont, command=open_ls)  #open_abp)
+app.button_abp = cttk.CTkButton(app, width=350, height=80, text="ABP", font=defaultfont, command=open_abp)
 app.button_abp.grid(row=4, column=2, padx=20, pady=(0,20))
 
 
