@@ -47,6 +47,9 @@ class FL:
     # Insercao de elemento em uma determinada posicao
     def appendList(self, elem):
         
+        if self.dados[self.len - 1] is not None:
+            return False
+
         for i in range (self.len - 1, 0, -1):
             if self.dados[i-1] is not None:
                 self.dados[i] = self.dados[i-1]
@@ -70,11 +73,11 @@ class FL:
         self.dados[:self.len] = sorted(self.dados[:self.len], key=lambda x: x is None)
         return True
     
-    def draw_sequential_list(self, canvas, size):
+    def draw_queue(self, canvas, size):
         canvas.delete("all")
         x = 500
         y = 370  
-        node_spacing_horizontal = 100
+        node_spacing_horizontal = 80
 
         if size != 1:
             for i in range(1, size):
