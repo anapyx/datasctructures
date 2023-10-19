@@ -5,6 +5,8 @@ class No:
         self.content = content
         self.next = None
         self.prev = None
+        self.left = None
+        self.right = None
 
     def getContent(self):
         return self.content
@@ -23,6 +25,18 @@ class No:
 
     def getPrevious(self):
         return self.prev
+    
+      def getLeft(self):
+        return self.left
+    
+    def setLeft(self, left):
+        self.left = left
+
+    def getRight(self):
+        return self.right
+    
+    def setRigt(self, right):
+        self.right = right
 
     cor_azul_claro = "#3B8ED0"
     cor_azul_escuro = "#ad8c1d"
