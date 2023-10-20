@@ -26,7 +26,7 @@ class No:
     def getPrevious(self):
         return self.prev
     
-      def getLeft(self):
+    def getLeft(self):
         return self.left
     
     def setLeft(self, left):
