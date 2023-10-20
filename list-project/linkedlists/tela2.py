@@ -7,7 +7,8 @@ import sys
 cttk.set_default_color_theme("blue")
 
 app = cttk.CTk()
-app.geometry("1100x780")
+app.attributes('-fullscreen', True) 
+app.geometry("1080x1080")
 
 import sys
 if len(sys.argv) > 1:
@@ -80,7 +81,6 @@ def create_head(canvas):
     dialog = cttk.CTkInputDialog(text="Digite o valor do número a ser inserido: ", title="Adicionar")
     elem = dialog.get_input()
     pos = 1
-    #elem = int(elem)
     result = myList.appendList(elem, pos)
     
     if result is True:
@@ -203,7 +203,6 @@ def search_position(canvas):
 if list_type == 'Lista Sequencial':
     app.buttonSize = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Definir Tamanho", font=defaultfont, command= lambda: define_size((app.canvas_in_frame)))
     app.buttonSize.grid(row=0, column=0, padx=20, pady=(40, 20))
-
 else:
     app.buttonHead = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Criar Cabeça", font=defaultfont, command= lambda: create_head((app.canvas_in_frame)))
     app.buttonHead.grid(row=0, column=0, padx=20, pady=(40, 20))

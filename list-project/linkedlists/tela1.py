@@ -8,7 +8,9 @@ import webbrowser
 script_directory = os.path.dirname(os.path.abspath(__file__))
 
 app = cttk.CTk() 
-app.geometry("1100x780")
+# app.attributes("-fullscreen", "True")
+# app.columnconfigure(0, weight=1)
+# app.rowconfigure(0, weight=1)
 
 app.title("Projeto de Listas - Estrutura de dados")
 
@@ -84,7 +86,7 @@ def open_abp():
     parent_directory = os.path.dirname(current_directory)
     tela3_path = os.path.join(parent_directory,'linkedlists', 'tela3.py')
 
-    subprocess.call(["python", tela3_path, 'Arvores Binárias de Pesquisa'])
+    subprocess.call(["python", tela3_path, 'Árvores Binárias de Pesquisa'])
 
 
 # funcao para abrir documentacao

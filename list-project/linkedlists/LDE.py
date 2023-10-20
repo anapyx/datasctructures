@@ -71,7 +71,6 @@ class LDE():
     # Adiciona No em lista vazia
     def append(self, elem):
         newnode = No(elem)
-        newnode.setContent(elem)
         if self.empty():
             self.head = newnode
             self.tail = newnode
