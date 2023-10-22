@@ -203,7 +203,7 @@ def search_position(canvas):
 # Botoes do menu da tela de listas
 
 # testando tipos sem abrir a tela principal
-list_type = 'Lista Sequencial'
+#list_type = 'Lista Sequencial'
 
 if list_type == 'Lista Sequencial':
     app.buttonSize = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Definir Tamanho", font=defaultfont, command= lambda: define_size((app.canvas_in_frame)))
