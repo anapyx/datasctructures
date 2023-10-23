@@ -49,7 +49,7 @@ app.canvas_in_frame.configure(bg='#2b2b2b', highlightbackground='#2b2b2b')
 # Funcao de percorrer entre telas
 def open_AppScreen():
     app.destroy()
-    current_directory = os.path.dirname(os.path.abspath(_file_))
+    current_directory = os.path.dirname(os.path.abspath(__file__))
     parent_directory = os.path.dirname(current_directory)
     AppScreen_path = os.path.join(parent_directory,'ds-project', 'AppScreen.py')
     subprocess.call(["python", AppScreen_path])
