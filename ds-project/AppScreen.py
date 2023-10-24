@@ -7,7 +7,7 @@ import webbrowser
 
 script_directory = os.path.dirname(os.path.abspath(__file__))
 
-app = cttk.CTk() 
+app = cttk.CTk()
 app.geometry("1366x740")
 
 app.title("Estruturas de Dados")
