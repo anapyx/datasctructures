@@ -8,14 +8,14 @@ class FL:
         self.len = len(self.dados)
         self.node_radius = 45
 
-    # Verifica se a lista esta vazia
+    # Verifica se a fila esta vazia
     def empty(self):
         if self.len == 0:
             return True
         else:
             return False
 
-    # Verifica se a lista esta cheia
+    # Verifica se a fila esta cheia
     def full(self):
         if self.empty() == True:
             return False
@@ -25,23 +25,21 @@ class FL:
             else:
                 return True
     
-    # Retorna o tamanho da lista
+    # Retorna o tamanho da fila
     def size(self):
         self.len = len(self.dados)
         return self.len
     
-    # Printa os elementos da lista
+    # Printa os elementos da fila
     def printList(self):
         print(self.dados)
 
-    #!! !  ! ! ! ! ! !! ! ! ! ! ! ! ! !
     # retorna o primeiro elemento da fila
     def element(self):
         for i in range(self.len -1, -1, -1):
 
             if self.dados[i] != None:
                 return self.dados[i]
-    
     
     
     # Insercao de elemento em uma determinada posicao
@@ -68,7 +66,7 @@ class FL:
         return False
 
 
-    # Ordena a lista para que todos os elementos nulos fiquem no final
+    # Ordena a fila para que todos os elementos nulos fiquem no final
     def sortList(self):
         self.dados[:self.len] = sorted(self.dados[:self.len], key=lambda x: x is None)
         return True

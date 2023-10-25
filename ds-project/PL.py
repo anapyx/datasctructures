@@ -9,14 +9,14 @@ class PL:
         self.len = len(self.dados)
         self.node_radius = 45
 
-    # Verifica se a lista esta vazia
+    # Verifica se a pilha esta vazia
     def empty(self):
         if self.len == 0:
             return True
         else:
             return False
 
-    # Verifica se a lista esta cheia
+    # Verifica se a pilha esta cheia
     def full(self):
         if self.empty() == True:
             return False
@@ -26,7 +26,7 @@ class PL:
             else:
                 return True
 
-    # Retorna o tamanho da lista
+    # Retorna o tamanho da pilha
     def size(self):
         self.len = len(self.dados)
         return self.len

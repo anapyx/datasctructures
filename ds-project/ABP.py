@@ -6,18 +6,21 @@ class ABP(No):
     def __init__(self, content=None):
         self.root = super().__init__(content)
 
+    # Checa se árvore está vazia pela raiz nula
     def empty(self):
         if self.root is None:
             return True
         else:
             return False
 
+    # Implementa os casos de busca por valor
     def search(self, value):
         if self.empty():
             return 'A árvore está vazia'
 
         return self._search(self.root, value)
     
+    # Busca por valor
     def _search(self, No, value):
         if No is None:
             return None
@@ -30,6 +33,7 @@ class ABP(No):
         else:
             return self._search(No.getRight(), value)
 
+    # Implementa funcoes de adicionar elemento na ABP
     def appendList(self, elem):
         newNo = No(elem)
 
@@ -64,6 +68,7 @@ class ABP(No):
         else:
             return False
 
+    # Implementa funcoes de remocao na ABP
     def removeList(self, value):
         if self.empty():
             return False  
@@ -98,12 +103,14 @@ class ABP(No):
 
         return No
 
-    
+    # Encontra o menor valor da ABP
     def _find_min(self, No):
         while No.getLeft() is not None:
             No = No.getLeft()
         return No
     
+    # Desenha a arvore no canvas
+
     def draw_tree(self, canvas):
         canvas.delete("all") 
         
@@ -135,6 +142,7 @@ class ABP(No):
                 canvas.create_oval(x - 35, y - 35, x + 35, y + 35, fill="white")
                 canvas.create_text(x, y, text=str(No.getContent()), font=("Arial", 20))
 
+    # Desenha a ABP nas representacoes ordem, preordem e posordem
     def draw_tree_sequence(self, canvas, mode):
         root = self.root 
         values = []  
