@@ -19,7 +19,7 @@ if len(sys.argv) > 1:
 else:
     structure_type = "Estrutura"
 
-app.title("Projeto Estrutura de dados Parte 2")
+app.title("Estruturas de Dados")
 
 sys.path.insert(0, "..")
 

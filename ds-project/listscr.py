@@ -18,7 +18,7 @@ if len(sys.argv) > 1:
 else:
     list_type = "LISTAS"
 
-app.title("Estruturas de Dados - Listas")
+app.title("Estruturas de Dados")
 
 sys.path.insert(0, "..")
 
