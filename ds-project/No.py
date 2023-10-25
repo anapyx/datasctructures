@@ -35,7 +35,7 @@ class No:
     def getRight(self):
         return self.right
     
-    def setRigt(self, right):
+    def setRight(self, right):
         self.right = right
 
     cor_azul_claro = "#3B8ED0"

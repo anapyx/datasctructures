@@ -7,7 +7,7 @@ import webbrowser
 
 script_directory = os.path.dirname(os.path.abspath(__file__))
 
-app = cttk.CTk() 
+app = cttk.CTk()
 app.geometry("1366x740")
 
 app.title("Estruturas de Dados")
@@ -83,7 +83,7 @@ def open_abp():
     parent_directory = os.path.dirname(current_directory)
     treescr_path = os.path.join(parent_directory,'ds-project', 'treescr.py')
 
-    subprocess.call(["python", treescr_path, 'Arvores Binárias de Pesquisa'])
+    subprocess.call(["python", treescr_path, 'Árvores Binárias de Pesquisa'])
 
 
 # funcao para abrir documentacao
