@@ -86,9 +86,9 @@ def open_abp():
     subprocess.call(["python", treescr_path, 'Árvores Binárias de Pesquisa'])
 
 
-# funcao para abrir documentacao
+# Abrir documentacao
 def open_doc():
-    url = "https://github.com/anapyx/list-project.git"
+    url = "https://github.com/anapyx/datasctructures.git"
     webbrowser.open(url)
 
 # botões da tela principal associados as funcoes
