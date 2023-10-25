@@ -77,6 +77,22 @@ Os métodos da Lista Sequencial São:
 - draw_singly_linked_list(canvas): função para representação gráfica da lista na interface visual (apenas na LSE)
 - draw_doubly_linked_list(canvas): função para representação gráfica da lista na interface visual (apenas na LDE)
 
+### Pilha
+Está definida no arquivo PL.py. A classe PL se inicializa inserindo como entrada o tamanho da pilha. Seus atributos definidos com a inicialização são:
+- dados: a lista de elementos com tamanho size(entrada)
+- len: tamanho da lista de dados
+- node_radius: tamanho da caixa do elemento
+
+Os métodos da Pilha são:
+- empty(): retorna se a lista está vazia
+- full(): retorna se a lista está cheia
+- size(): retorna 'len', o tamanho de dados[]
+- top_stack(): retorna o elemento que está no topo da lista (último que foi inserido)
+- appendList(elem,pos): adiciona elemento em determinada posição
+- removeList(pos): remove elemento que se encontra no topo da pilha
+- sortList(): coloca todos os elementos vazios no fim da lista
+- draw_stack(canvas,size): função para representação gráfica da pilha na interface visual
+
 ## Interface Visual
 A interface visual está implementada através dos arquivos tela1.py e tela2.py. Em que a tela 1 é a tela inicial para selecionar o tipo de lista e a tela 2 é a interface da lista escolhida. São importadas CustomTkinter, Os, Subprocess, Webbrowser além de No.py, LS.py, LSE.py e LDE.py.
 
