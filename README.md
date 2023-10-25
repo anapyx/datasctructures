@@ -1,10 +1,12 @@
-# Lists Project
+# Data Structures Project
 
-**Aplicação do projeto:**
+**Interface visual de aplicação das estruturas de dados:**
 - Listas Sequenciais
 - Listas Simplesmente Encadeadas
 - Listas Duplamente Encadeadas
-- Interface Visual para manipulação das listas
+- Pilhas
+- Filas
+- Árvores Binárias de Busca
 
 **Disciplina:** Estrutura de Dados
 
@@ -13,10 +15,10 @@
 **Equipe de desenvolvedores:**
 - Ana Cabral
 - Bárbara Alves
-- Felipe Lima
+- Felipe Silva Lima
 - João Pedro Gomes
 
-## Lists Project - Implementação
+## Implementação
 Foram criados Classes para cada tipo de Lista que contem métodos de funções para sua manipulação, além de uma Classe Nó que é utilizada nas Classes das Listas Simplesmente Encadeadas e Duplamente Encadeadas. Além disso foram utilizadas as bibliotecas de interface visual Tkinter e CustomTkinter para demonstração do funcionamento das listas e funções.
 
 **Para utilizar o programa, além de claro, Python, o usuário deverá ter o [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter#installation) instalado, a pasta linkedlists e executar o arquivo tela1.py.**
