@@ -16,18 +16,20 @@ app.geometry("1366x710")
 if len(sys.argv) > 1:
     list_type = sys.argv[1]
 else:
-    list_type = "LISTAS"
+    list_type = "Listas"
 
 app.title("Estruturas de Dados")
 
+# Tela para aplicação das Listas
+
 sys.path.insert(0, "..")
 
-
+# fontes utilizadas
 defaultfont = cttk.CTkFont(size=15, weight='bold')
 defaultfont2 = cttk.CTkFont(size=25, weight='bold')
-# customFont = cttk.CTkFont(size=42, weight='bold')
 titulos = cttk.CTkFont(family='Helvetica', size=42, weight='bold')
 
+# criação de frames e canvas
 app.grid_columnconfigure((1, 2, 3, 4, 5), weight=1)
 app.grid_rowconfigure((0, 1, 2, 3, 4, 5), weight=1)
 
@@ -45,8 +47,6 @@ app.canvas_in_frame.pack()
 app.canvas_in_frame.configure(bg='#2b2b2b', highlightbackground='#2b2b2b')
 
 # Funcao de percorrer entre telas
-
-
 def open_AppScreen():
     app.destroy()
     current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -56,7 +56,6 @@ def open_AppScreen():
     subprocess.call(["python", AppScreen_path])
 
 # Funcoes do canvas para listas
-
 
 def define_size(canvas):
     global myList
@@ -91,7 +90,7 @@ def create_head(canvas):
         text="Digite o valor do número a ser inserido: ", title="Adicionar")
     elem = dialog.get_input()
     pos = 1
-    # elem = int(elem)
+    #elem = int(elem)
     result = myList.appendList(elem, pos)
 
     if result is True:
@@ -238,7 +237,7 @@ def search_position(canvas):
 # testando tipos sem abrir a tela principal
 # list_type = 'Lista Sequencial'
 
-
+# Inicializa tipo de Lista
 if list_type == 'Lista Sequencial':
     app.buttonSize = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Definir Tamanho",
                                     font=defaultfont, command=lambda: define_size((app.canvas_in_frame)))
@@ -248,6 +247,7 @@ else:
                                     font=defaultfont, command=lambda: create_head((app.canvas_in_frame)))
     app.buttonHead.grid(row=0, column=0, padx=20, pady=(40, 20))
 
+# Botões do frame
 app.buttonAdd = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Adicionar\nElemento",
                                font=defaultfont, command=lambda: add_element(app.canvas_in_frame))
 app.buttonAdd.grid(row=1, column=0, padx=20, pady=20)
@@ -268,11 +268,11 @@ app.buttonGoBack = cttk.CTkButton(
     app.frameMenu, width=200, height=50, text="Retornar", font=defaultfont, command=open_AppScreen)
 app.buttonGoBack.grid(row=5, column=0, padx=20, pady=20)
 
+# Titulo da tela
 label = cttk.CTkLabel(master=app, text=list_type, text_color='white')
 label.configure(width=app.winfo_screenwidth(), height=100,
                 font=titulos, pady=10, padx=20, corner_radius=10)
 label.grid(row=0, column=0, columnspan=5, padx=20, pady=20)
 label.configure(fg_color='#142c59')
-
 
 app.mainloop()

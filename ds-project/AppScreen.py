@@ -12,7 +12,7 @@ app.geometry("1366x740")
 
 app.title("Estruturas de Dados")
 
-# criando frames
+# Criando Frames no App
 app.mainframe = cttk.CTkFrame(app, width=140, height=100, corner_radius=0)
 app.mainframe.grid(row=5, column=0, columnspan=3, sticky="nsew")
 #app.mainframe.grid_rowconfigure(4, weight=1)
@@ -25,7 +25,7 @@ app.selectionframe.grid(row=2, column=0, columnspan=3, sticky="nsew")
 app.grid_columnconfigure((0, 1, 2, 3), weight=1)
 app.grid_rowconfigure((0, 1, 2, 3, 4), weight=1)
 
-# fontes do app
+# Fontes do app
 defaultfont = cttk.CTkFont(size=20, weight='bold')
 mainfont =cttk.CTkFont(family='Helvetica', size=70, weight='bold')
 customFont = cttk.CTkFont(size=42, weight='bold')
@@ -101,7 +101,6 @@ app.button_lse.grid(row=3, column=1, padx=(20,0), pady=20)
 app.button_lde = cttk.CTkButton(app, width=350, height=80, text="Lista Duplamente\nEncadeada", text_color='#fffdfa', font=defaultfont, command=open_lde)
 app.button_lde.grid(row=3, column=2, padx=20, pady=20)
 
-
 app.button_pl = cttk.CTkButton(app, width=350, height=80, text="Pilha", text_color='#fffdfa', font=defaultfont, command=open_pl)
 app.button_pl.grid(row=4, column=0, padx=(20,0), pady=(0,20))
 
@@ -110,7 +109,6 @@ app.button_fl.grid(row=4, column=1, padx=(20,0), pady=(0,20))
 
 app.button_abp = cttk.CTkButton(app, width=350, height=80, text="Árvore Binária de Pesquisa", text_color='#fffdfa', font=defaultfont, command=open_abp)
 app.button_abp.grid(row=4, column=2, padx=20, pady=(0,20))
-
 
 app.button_doc = cttk.CTkButton(app, fg_color='#142c59', width=350, height=40, text="Documentação",font=cttk.CTkFont(size=16, weight="bold"), command=open_doc)
 app.button_doc.grid(row=5, column=2, padx=20, pady=20)

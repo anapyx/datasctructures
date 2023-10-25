@@ -21,14 +21,18 @@ else:
 
 app.title("Estruturas de Dados")
 
-sys.path.insert(0, "..")
+# Tela de Aplicação de Filas, Pilhas e ABPs
 
+sys.path.insert(0, "..")
 
 mystructure = None
 
+# Fontes utilizadas
 defaultfont = cttk.CTkFont(size=15, weight='bold')
 defaultfont2 = cttk.CTkFont(size=25, weight='bold')
-customFont = cttk.CTkFont(size=42, weight='bold')
+titulos = cttk.CTkFont(family='Helvetica', size=42, weight='bold')
+
+# criação de frames e canvas
 
 app.grid_columnconfigure((1, 2, 3, 4, 5), weight=1)
 app.grid_rowconfigure((0, 1, 2, 3, 4, 5), weight=1)
@@ -280,10 +284,10 @@ def search(canvas, mystructure):
     canvas.configure(bg='#242424', highlightbackground='#242424')
     canvas.pack()
 
-    animation_button = cttk.CTkButton(root, text='Animar')
-    animation_button.pack()
-
     root.mainloop()
+
+# ---- Tela de Filas, Pilhas, ABP ----
+# Criação de botoes para cada caso
 
 if structure_type == 'Árvores Binárias de Pesquisa':
     app.buttonSize = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Criar Raiz",
@@ -316,6 +320,7 @@ elif structure_type == 'Fila':
                                     font=defaultfont, command=lambda: search_queue(app.canvas_in_frame))
     app.buttonElem.grid(row=3, column=0, padx=20, pady=20)
 
+
 app.buttonAdd = cttk.CTkButton(app.frameMenu, width=200, height=50, text="Adicionar\nElemento",
                                font=defaultfont, command=lambda: add_element(app.canvas_in_frame))
 app.buttonAdd.grid(row=1, column=0, padx=20, pady=20)
@@ -324,9 +329,10 @@ app.buttonGoBack = cttk.CTkButton(
     app.frameMenu, width=200, height=50, text="Retornar", font=defaultfont, command=open_AppScreen)
 app.buttonGoBack.grid(row=4, column=0, padx=20, pady=20)
 
+# Titulo da tela
 label = cttk.CTkLabel(master=app, text=structure_type, text_color='white')
 label.configure(width=app.winfo_screenwidth(), height=100,
-                font=customFont, pady=10, padx=20, corner_radius=10)
+                font=titulos, pady=10, padx=20, corner_radius=10)
 label.grid(row=0, column=0, columnspan=5, padx=20, pady=20)
 label.configure(fg_color='#142c59')
 
