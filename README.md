@@ -88,9 +88,8 @@ Os métodos da Pilha são:
 - full(): retorna se a lista está cheia
 - size(): retorna 'len', o tamanho de dados[]
 - top_stack(): retorna o elemento que está no topo da lista (último que foi inserido)
-- appendList(elem,pos): adiciona elemento em determinada posição
+- appendList(elem,pos): adiciona elemento no topo da pilha
 - removeList(pos): remove elemento que se encontra no topo da pilha
-- sortList(): coloca todos os elementos vazios no fim da lista
 - draw_stack(canvas,size): função para representação gráfica da pilha na interface visual
 
 ## Interface Visual
