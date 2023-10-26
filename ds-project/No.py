@@ -39,7 +39,7 @@ class No:
         self.right = right
 
     cor_azul_claro = "#3B8ED0"
-    cor_azul_escuro = "#ad8c1d"
+    cor_amarelo = "#f0cd51"
     cor_branca = "#fffdfa"
 
 

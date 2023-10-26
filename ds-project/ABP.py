@@ -1,7 +1,6 @@
 from No import No
 import customtkinter as ctk
-import time
-import random
+
 class ABP(No):
     def __init__(self, content=None):
         self.root = super().__init__(content)
@@ -127,7 +126,7 @@ class ABP(No):
                 start_y = y + 25
                 end_x = x - spacing
                 end_y = y + 75
-                canvas.create_line(start_x, start_y, end_x, end_y, arrow=ctk.LAST, width=4)
+                canvas.create_line(start_x, start_y, end_x, end_y, arrow=ctk.LAST, fill=No.cor_azul_claro, width=4)
                 self._draw_tree_recursive(No.getLeft(), canvas, x - spacing, y + 75, spacing // 2)
 
             if No.getRight():
@@ -135,11 +134,16 @@ class ABP(No):
                 start_y = y + 25
                 end_x = x + spacing
                 end_y = y + 75
-                canvas.create_line(start_x, start_y, end_x, end_y, arrow=ctk.LAST, width=4)
+                canvas.create_line(start_x, start_y, end_x, end_y, arrow=ctk.LAST, fill=No.cor_azul_claro, width=4)
                 self._draw_tree_recursive(No.getRight(), canvas, x + spacing, y + 75, spacing // 2)
 
             if No.getContent() is not None:
-                canvas.create_oval(x - 35, y - 35, x + 35, y + 35, fill="white")
+                if No == self.root:
+                    outline_color = No.cor_amarelo
+                else:
+                    outline_color = No.cor_azul_claro
+
+                canvas.create_oval(x - 35, y - 35, x + 35, y + 35, fill="white", outline=outline_color, width=4)
                 canvas.create_text(x, y, text=str(No.getContent()), font=("Arial", 20))
 
     # Desenha a ABP nas representacoes ordem, preordem e posordem
@@ -178,8 +182,8 @@ class ABP(No):
         x = (canvas.winfo_reqwidth() - total_width) / 2
 
         y = 50
-
+        
         for value in values:
-            canvas.create_oval(x - 30, y - 30, x + 30, y + 30, fill="white")
+            canvas.create_oval(x - 30, y - 30, x + 30, y + 30, fill="white", outline=No.cor_azul_claro, width=3)
             canvas.create_text(x, y, text=value, font=("Arial", 16))
             x += spacing

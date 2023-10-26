@@ -232,7 +232,7 @@ class LDE():
 
             #print(type(current), type(self.head), type(self.tail))
             if current == self.head or current == self.tail:
-                cor_azul = No.cor_azul_escuro
+                cor_azul = No.cor_amarelo
             else:
                 cor_azul = No.cor_azul_claro
 

@@ -172,7 +172,7 @@ class LSE:
 
             cor_azul = No.cor_azul_claro
             if cor_cabeca == False:
-                cor_azul = No.cor_azul_escuro
+                cor_azul = No.cor_amarelo
 
             if current.content is not None:
                 self.round_rectangle(canvas, x - self.node_radius, y - self.node_radius,
